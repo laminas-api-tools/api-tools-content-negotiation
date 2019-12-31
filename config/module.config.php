@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-use Zend\Filter\File\RenameUpload;
-use Zend\Validator\File\UploadFile;
-use Zend\ServiceManager\Factory\InvokableFactory;
-use ZF\ContentNegotiation\AcceptFilterListener;
-use ZF\ContentNegotiation\AcceptListener;
-use ZF\ContentNegotiation\ContentNegotiationOptions;
-use ZF\ContentNegotiation\ContentTypeFilterListener;
-use ZF\ContentNegotiation\ContentTypeListener;
-use ZF\ContentNegotiation\ControllerPlugin;
-use ZF\ContentNegotiation\Factory;
-use ZF\ContentNegotiation\JsonModel;
+use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
+use Laminas\ApiTools\ContentNegotiation\AcceptListener;
+use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
+use Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener;
+use Laminas\ApiTools\ContentNegotiation\ContentTypeListener;
+use Laminas\ApiTools\ContentNegotiation\ControllerPlugin;
+use Laminas\ApiTools\ContentNegotiation\Factory;
+use Laminas\ApiTools\ContentNegotiation\JsonModel;
+use Laminas\Filter\File\RenameUpload;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\Validator\File\UploadFile;
 
 return [
     'filters' => [
@@ -23,7 +25,7 @@ return [
             RenameUpload::class => Factory\RenameUploadFilterFactory::class,
 
             // v2 support
-            'zendfilterfilerenameupload' => Factory\RenameUploadFilterFactory::class,
+            'laminasfilterfilerenameupload' => Factory\RenameUploadFilterFactory::class,
         ],
     ],
 
@@ -33,7 +35,7 @@ return [
             UploadFile::class => Factory\UploadFileValidatorFactory::class,
 
             // v2 support
-            'zendvalidatorfileuploadfile' => Factory\UploadFileValidatorFactory::class,
+            'laminasvalidatorfileuploadfile' => Factory\UploadFileValidatorFactory::class,
         ],
     ],
 
@@ -48,7 +50,7 @@ return [
         ],
     ],
 
-    'zf-content-negotiation' => [
+    'api-tools-content-negotiation' => [
         // This is an array of controller service names pointing to one of:
         // - a named selector (see below)
         // - an array of specific selectors, in the same format as for the
@@ -59,7 +61,7 @@ return [
         // view model type pointing to the Accept mediatypes that will trigger
         // selection of that view model; see the documentation on the
         // AcceptableViewModelSelector plugin for details on the format:
-        // http://zendframework.github.io/zend-mvc/plugins/#acceptableviewmodelselector-plugin
+        // http://docs.laminas.dev/laminas-mvc/plugins/#acceptableviewmodelselector-plugin
         'selectors'              => [
             'Json' => [
                 JsonModel::class => [

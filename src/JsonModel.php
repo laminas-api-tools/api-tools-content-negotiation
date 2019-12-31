@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
 use JsonSerializable;
-use Zend\Json\Json;
-use Zend\Stdlib\JsonSerializable as StdlibJsonSerializable;
-use Zend\View\Model\JsonModel as BaseJsonModel;
-use ZF\Hal\Entity as HalEntity;
-use ZF\Hal\Collection as HalCollection;
+use Laminas\ApiTools\Hal\Collection as HalCollection;
+use Laminas\ApiTools\Hal\Entity as HalEntity;
+use Laminas\Json\Json;
+use Laminas\Stdlib\JsonSerializable as StdlibJsonSerializable;
+use Laminas\View\Model\JsonModel as BaseJsonModel;
 
 class JsonModel extends BaseJsonModel
 {
@@ -58,12 +60,12 @@ class JsonModel extends BaseJsonModel
     /**
      * Override serialize()
      *
-     * Tests for the special top-level variable "payload", set by ZF\Rest\RestController.
+     * Tests for the special top-level variable "payload", set by Laminas\ApiTools\Rest\RestController.
      *
      * If discovered, the value is pulled and used as the variables to serialize.
      *
-     * A further check is done to see if we have a ZF\Hal\Entity or
-     * ZF\Hal\Collection, and, if so, we pull the top-level entity or
+     * A further check is done to see if we have a Laminas\ApiTools\Hal\Entity or
+     * Laminas\ApiTools\Hal\Collection, and, if so, we pull the top-level entity or
      * collection and serialize that.
      *
      * @return string
@@ -77,12 +79,12 @@ class JsonModel extends BaseJsonModel
             $variables = $variables['payload'];
         }
 
-        // Use ZF\Hal\Entity's composed entity
+        // Use Laminas\ApiTools\Hal\Entity's composed entity
         if ($variables instanceof HalEntity) {
             $variables = $variables->getEntity();
         }
 
-        // Use ZF\Hal\Collection's composed collection
+        // Use Laminas\ApiTools\Hal\Collection's composed collection
         if ($variables instanceof HalCollection) {
             $variables = $variables->getCollection();
         }

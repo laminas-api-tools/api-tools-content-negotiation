@@ -1,16 +1,17 @@
 <?php
+
 /**
- * @link      http://github.com/zfcampus/zf-content-negotiation for the canonical source repository
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
+use Laminas\Http\Headers;
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionMethod;
-use Zend\Http\Headers;
-use ZF\ContentNegotiation\AcceptFilterListener;
 
 class AcceptFilterListenerTest extends TestCase
 {

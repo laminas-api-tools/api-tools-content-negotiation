@@ -1,10 +1,10 @@
 <?php
 
-namespace ZF\ContentNegotiation\Factory;
+namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
+use Laminas\Filter\FilterPluginManager;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Filter\FilterPluginManager;
-use Zend\ServiceManager\ServiceManager;
 
 class RenameUploadFilterFactoryTest extends TestCase
 {
@@ -14,7 +14,7 @@ class RenameUploadFilterFactoryTest extends TestCase
     {
         $config = [
             'factories' => [
-                'filerenameupload' => 'ZF\ContentNegotiation\Factory\RenameUploadFilterFactory',
+                'filerenameupload' => 'Laminas\ApiTools\ContentNegotiation\Factory\RenameUploadFilterFactory',
             ],
         ];
         $this->filters = new FilterPluginManager(new ServiceManager(), $config);
