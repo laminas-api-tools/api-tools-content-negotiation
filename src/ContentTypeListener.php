@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Mvc\MvcEvent;
-use ZF\ApiProblem\ApiProblem;
-use ZF\ApiProblem\ApiProblemResponse;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\Mvc\MvcEvent;
 
 class ContentTypeListener
 {
@@ -119,7 +121,7 @@ class ContentTypeListener
 
         $bodyParams = $bodyParams ?: array();
         $parameterData->setBodyParams($bodyParams);
-        $e->setParam('ZFContentNegotiationParameterData', $parameterData);
+        $e->setParam('LaminasContentNegotiationParameterData', $parameterData);
     }
 
     /**
@@ -137,7 +139,7 @@ class ContentTypeListener
                 continue;
             }
 
-            if (! preg_match('/^zfc/', basename($fileInfo['tmp_name']))) {
+            if (! preg_match('/^laminasc/', basename($fileInfo['tmp_name']))) {
                 // File was moved
                 continue;
             }
