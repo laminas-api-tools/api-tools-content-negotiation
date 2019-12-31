@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector;
-use Zend\Mvc\MvcEvent;
+use Laminas\Mvc\Controller\Plugin\AcceptableViewModelSelector;
+use Laminas\Mvc\MvcEvent;
 
 class Module
 {
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__,
                 ),
@@ -30,14 +32,14 @@ class Module
     public function getServiceConfig()
     {
         return array('factories' => array(
-            'ZF\ContentNegotiation\AcceptListener' => function ($services) {
+            'Laminas\ApiTools\ContentNegotiation\AcceptListener' => function ($services) {
                 $config = array();
                 if ($services->has('Config')) {
                     $appConfig = $services->get('Config');
-                    if (isset($appConfig['zf-content-negotiation'])
-                        && is_array($appConfig['zf-content-negotiation'])
+                    if (isset($appConfig['api-tools-content-negotiation'])
+                        && is_array($appConfig['api-tools-content-negotiation'])
                     ) {
-                        $config = $appConfig['zf-content-negotiation'];
+                        $config = $appConfig['api-tools-content-negotiation'];
                     }
                 }
 
@@ -53,17 +55,17 @@ class Module
                 }
                 return new AcceptListener($selector, $config);
             },
-            'ZF\ContentNegotiation\AcceptFilterListener' => function ($services) {
+            'Laminas\ApiTools\ContentNegotiation\AcceptFilterListener' => function ($services) {
                 $listener = new AcceptFilterListener();
 
                 $config   = array();
                 if ($services->has('Config')) {
                     $moduleConfig = false;
                     $appConfig    = $services->get('Config');
-                    if (isset($appConfig['zf-content-negotiation'])
-                        && is_array($appConfig['zf-content-negotiation'])
+                    if (isset($appConfig['api-tools-content-negotiation'])
+                        && is_array($appConfig['api-tools-content-negotiation'])
                     ) {
-                        $moduleConfig = $appConfig['zf-content-negotiation'];
+                        $moduleConfig = $appConfig['api-tools-content-negotiation'];
                     }
 
                     if ($moduleConfig
@@ -80,17 +82,17 @@ class Module
 
                 return $listener;
             },
-            'ZF\ContentNegotiation\ContentTypeFilterListener' => function ($services) {
+            'Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener' => function ($services) {
                 $listener = new ContentTypeFilterListener();
 
                 $config   = array();
                 if ($services->has('Config')) {
                     $moduleConfig = false;
                     $appConfig    = $services->get('Config');
-                    if (isset($appConfig['zf-content-negotiation'])
-                        && is_array($appConfig['zf-content-negotiation'])
+                    if (isset($appConfig['api-tools-content-negotiation'])
+                        && is_array($appConfig['api-tools-content-negotiation'])
                     ) {
-                        $moduleConfig = $appConfig['zf-content-negotiation'];
+                        $moduleConfig = $appConfig['api-tools-content-negotiation'];
                     }
 
                     if ($moduleConfig
@@ -120,12 +122,12 @@ class Module
 
         $sem = $em->getSharedManager();
         $sem->attach(
-            'Zend\Stdlib\DispatchableInterface',
+            'Laminas\Stdlib\DispatchableInterface',
             MvcEvent::EVENT_DISPATCH,
-            $services->get('ZF\ContentNegotiation\AcceptListener'),
+            $services->get('Laminas\ApiTools\ContentNegotiation\AcceptListener'),
             -10
         );
-        $sem->attachAggregate($services->get('ZF\ContentNegotiation\AcceptFilterListener'));
-        $sem->attachAggregate($services->get('ZF\ContentNegotiation\ContentTypeFilterListener'));
+        $sem->attachAggregate($services->get('Laminas\ApiTools\ContentNegotiation\AcceptFilterListener'));
+        $sem->attachAggregate($services->get('Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener'));
     }
 }

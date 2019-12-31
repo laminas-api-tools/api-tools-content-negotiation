@@ -1,18 +1,20 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\AcceptListener;
+use Laminas\EventManager\SharedEventManager;
+use Laminas\Http\Request;
+use Laminas\Mvc\Controller\PluginManager as ControllerPluginManager;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Router\RouteMatch;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\EventManager\SharedEventManager;
-use Zend\Http\Request;
-use Zend\Mvc\Controller\PluginManager as ControllerPluginManager;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\RouteMatch;
-use ZF\ContentNegotiation\AcceptListener;
 
 class AcceptListenerTest extends TestCase
 {
@@ -23,11 +25,11 @@ class AcceptListenerTest extends TestCase
 
         $this->listener   = new AcceptListener($selector, array(
             'controllers' => array(
-                'ZFTest\ContentNegotiation\TestAsset\ContentTypeController' => 'Json',
+                'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => 'Json',
             ),
             'selectors' => array(
                 'Json' => array(
-                    'Zend\View\Model\JsonModel' => array(
+                    'Laminas\View\Model\JsonModel' => array(
                         'application/json',
                         'application/*+json',
                     ),
@@ -52,7 +54,7 @@ class AcceptListenerTest extends TestCase
         $listener = $this->listener;
         $this->event->setResult(array('foo' => 'bar'));
 
-        $this->setExpectedException('ZF\ApiProblem\Exception\DomainException', 'Unable to resolve', 406);
+        $this->setExpectedException('Laminas\ApiTools\ApiProblem\Exception\DomainException', 'Unable to resolve', 406);
         $listener($this->event);
     }
 
@@ -64,6 +66,6 @@ class AcceptListenerTest extends TestCase
 
         $listener($this->event);
         $result = $this->event->getResult();
-        $this->assertInstanceOf('Zend\View\Model\ModelInterface', $result);
+        $this->assertInstanceOf('Laminas\View\Model\ModelInterface', $result);
     }
 }

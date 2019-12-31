@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
 return array(
-    'zf-content-negotiation' => array(
+    'api-tools-content-negotiation' => array(
         'controllers' => array(),
         'selectors' => array(
             'Json' => array(
-                'ZF\ContentNegotiation\JsonModel' => array(
+                'Laminas\ApiTools\ContentNegotiation\JsonModel' => array(
                     'application/json',
                     'application/*+json',
                 ),
@@ -26,12 +28,12 @@ return array(
     ),
     'controller_plugins' => array(
         'invokables' => array(
-            'routeParam'                 => 'ZF\ContentNegotiation\ControllerPlugin\RouteParam',
-            'queryParam'                 => 'ZF\ContentNegotiation\ControllerPlugin\QueryParam',
-            'bodyParam'                  => 'ZF\ContentNegotiation\ControllerPlugin\BodyParam',
-            'routeParams'                => 'ZF\ContentNegotiation\ControllerPlugin\RouteParams',
-            'queryParams'                => 'ZF\ContentNegotiation\ControllerPlugin\QueryParams',
-            'bodyParams'                 => 'ZF\ContentNegotiation\ControllerPlugin\BodyParams',
+            'routeParam'                 => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\RouteParam',
+            'queryParam'                 => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\QueryParam',
+            'bodyParam'                  => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\BodyParam',
+            'routeParams'                => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\RouteParams',
+            'queryParams'                => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\QueryParams',
+            'bodyParams'                 => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\BodyParams',
         )
     )
 );
