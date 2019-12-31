@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\ControllerPlugin;
+namespace Laminas\ApiTools\ContentNegotiation\ControllerPlugin;
 
-use Zend\Mvc\Controller\Plugin\AbstractPlugin;
-use Zend\Mvc\Controller\AbstractController;
-use ZF\ContentNegotiation\ParameterDataContainer;
+use Laminas\ApiTools\ContentNegotiation\ParameterDataContainer;
+use Laminas\Mvc\Controller\AbstractController;
+use Laminas\Mvc\Controller\Plugin\AbstractPlugin;
 
 class QueryParams extends AbstractPlugin
 {
@@ -16,7 +18,7 @@ class QueryParams extends AbstractPlugin
     {
         $controller = $this->getController();
         if ($controller instanceof AbstractController) {
-            $parameterData = $controller->getEvent()->getParam('ZFContentNegotiationParameterData');
+            $parameterData = $controller->getEvent()->getParam('LaminasContentNegotiationParameterData');
             if ($parameterData instanceof ParameterDataContainer) {
                 return $parameterData->getQueryParams();
             }

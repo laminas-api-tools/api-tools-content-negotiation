@@ -1,7 +1,7 @@
-ZF Content Negotiation
+Laminas Content Negotiation
 ======================
 
-Module for automating content negotiation tasks within a Zend Framework 2
+Module for automating content negotiation tasks within a Laminas
 application.
 
 Allows the following:

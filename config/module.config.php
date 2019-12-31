@@ -1,19 +1,21 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
 return array(
     'service_manager' => array(
         'factories' => array(
-            'ZF\ContentNegotiation\AcceptListener'            => 'ZF\ContentNegotiation\Factory\AcceptListenerFactory',
-            'ZF\ContentNegotiation\AcceptFilterListener'      => 'ZF\ContentNegotiation\Factory\AcceptFilterListenerFactory',
-            'ZF\ContentNegotiation\ContentTypeFilterListener' => 'ZF\ContentNegotiation\Factory\ContentTypeFilterListenerFactory',
+            'Laminas\ApiTools\ContentNegotiation\AcceptListener'            => 'Laminas\ApiTools\ContentNegotiation\Factory\AcceptListenerFactory',
+            'Laminas\ApiTools\ContentNegotiation\AcceptFilterListener'      => 'Laminas\ApiTools\ContentNegotiation\Factory\AcceptFilterListenerFactory',
+            'Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener' => 'Laminas\ApiTools\ContentNegotiation\Factory\ContentTypeFilterListenerFactory',
         )
     ),
 
-    'zf-content-negotiation' => array(
+    'api-tools-content-negotiation' => array(
         // This is an array of controller service names pointing to one of:
         // - a named selector (see below)
         // - an array of specific selectors, in the same format as for the
@@ -24,10 +26,10 @@ return array(
         // view model type pointing to the Accept mediatypes that will trigger
         // selection of that view model; see the documentation on the
         // AcceptableViewModelSelector plugin for details on the format:
-        // http://zf2.readthedocs.org/en/latest/modules/zend.mvc.plugins.html?highlight=acceptableviewmodelselector#acceptableviewmodelselector-plugin
+        // http://laminas.readthedocs.org/en/latest/modules/laminas.mvc.plugins.html?highlight=acceptableviewmodelselector#acceptableviewmodelselector-plugin
         'selectors'   => array(
             'Json' => array(
-                'ZF\ContentNegotiation\JsonModel' => array(
+                'Laminas\ApiTools\ContentNegotiation\JsonModel' => array(
                     'application/json',
                     'application/*+json',
                 ),
@@ -45,12 +47,12 @@ return array(
 
     'controller_plugins' => array(
         'invokables' => array(
-            'routeParam'  => 'ZF\ContentNegotiation\ControllerPlugin\RouteParam',
-            'queryParam'  => 'ZF\ContentNegotiation\ControllerPlugin\QueryParam',
-            'bodyParam'   => 'ZF\ContentNegotiation\ControllerPlugin\BodyParam',
-            'routeParams' => 'ZF\ContentNegotiation\ControllerPlugin\RouteParams',
-            'queryParams' => 'ZF\ContentNegotiation\ControllerPlugin\QueryParams',
-            'bodyParams'  => 'ZF\ContentNegotiation\ControllerPlugin\BodyParams',
+            'routeParam'  => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\RouteParam',
+            'queryParam'  => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\QueryParam',
+            'bodyParam'   => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\BodyParam',
+            'routeParams' => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\RouteParams',
+            'queryParams' => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\QueryParams',
+            'bodyParams'  => 'Laminas\ApiTools\ContentNegotiation\ControllerPlugin\BodyParams',
         )
     )
 );
