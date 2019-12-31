@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\EventManager\SharedListenerAggregateInterface;
-use Zend\EventManager\SharedEventManagerInterface;
-use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\ArrayUtils;
-use ZF\ApiProblem\ApiProblem;
-use ZF\ApiProblem\ApiProblemResponse;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\EventManager\SharedListenerAggregateInterface;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Stdlib\ArrayUtils;
 
 class ContentTypeFilterListener implements SharedListenerAggregateInterface
 {
@@ -22,7 +24,7 @@ class ContentTypeFilterListener implements SharedListenerAggregateInterface
     protected $config = array();
 
     /**
-     * @var \Zend\Stdlib\CallbackHandler
+     * @var \Laminas\Stdlib\CallbackHandler
      */
     protected $listeners = array();
 
@@ -33,7 +35,7 @@ class ContentTypeFilterListener implements SharedListenerAggregateInterface
      */
     public function attachShared(SharedEventManagerInterface $events)
     {
-        $this->listeners[] = $events->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'), 100);
+        $this->listeners[] = $events->attach('Laminas\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'), 100);
     }
 
     /**
@@ -44,7 +46,7 @@ class ContentTypeFilterListener implements SharedListenerAggregateInterface
     public function detachShared(SharedEventManagerInterface $events)
     {
         foreach ($this->listeners as $index => $listener) {
-            if ($events->detach('Zend\Stdlib\DispatchableInterface', $listener)) {
+            if ($events->detach('Laminas\Stdlib\DispatchableInterface', $listener)) {
                 unset($this->listeners[$index]);
             }
         }
