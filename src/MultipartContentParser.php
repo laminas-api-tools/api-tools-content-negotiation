@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Http\Header\ContentType as ContentTypeHeader;
-use Zend\Http\Request as HttpRequest;
-use Zend\Stdlib\Parameters;
+use Laminas\Http\Header\ContentType as ContentTypeHeader;
+use Laminas\Http\Request as HttpRequest;
+use Laminas\Stdlib\Parameters;
 
 class MultipartContentParser
 {
@@ -226,7 +228,7 @@ class MultipartContentParser
                     continue;
                 }
 
-                $file['tmp_name'] = tempnam($tmpDir, 'zfc');
+                $file['tmp_name'] = tempnam($tmpDir, 'laminasc');
                 $tmpFile = fopen($file['tmp_name'], 'wb');
                 if (false === $tmpFile) {
                     // Cannot open the temporary file for writing; this is an error

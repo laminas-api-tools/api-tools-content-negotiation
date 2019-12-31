@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Factory;
+namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
-use Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use ZF\ContentNegotiation\AcceptListener;
+use Laminas\ApiTools\ContentNegotiation\AcceptListener;
+use Laminas\Mvc\Controller\Plugin\AcceptableViewModelSelector;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class AcceptListenerFactory implements FactoryInterface
 {
@@ -22,10 +24,10 @@ class AcceptListenerFactory implements FactoryInterface
 
         if ($serviceLocator->has('Config')) {
             $appConfig = $serviceLocator->get('Config');
-            if (isset($appConfig['zf-content-negotiation'])
-                && is_array($appConfig['zf-content-negotiation'])
+            if (isset($appConfig['api-tools-content-negotiation'])
+                && is_array($appConfig['api-tools-content-negotiation'])
             ) {
-                $config = $appConfig['zf-content-negotiation'];
+                $config = $appConfig['api-tools-content-negotiation'];
             }
         }
 
