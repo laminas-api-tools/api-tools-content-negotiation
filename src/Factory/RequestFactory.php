@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Factory;
+namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
-use Zend\Console\Console;
-use Zend\Console\Request as ConsoleRequest;
-use ZF\ContentNegotiation\Request as HttpRequest;
+use Laminas\ApiTools\ContentNegotiation\Request as HttpRequest;
+use Laminas\Console\Console;
+use Laminas\Console\Request as ConsoleRequest;
 
 class RequestFactory
 {
     /**
      * Create and return a request instance, according to current environment.
      *
-     * @param  \Zend\ServiceManager\ServiceLocatorInterface $services
+     * @param  \Laminas\ServiceManager\ServiceLocatorInterface $services
      * @return ConsoleRequest|HttpRequest
      */
     public function __invoke($services)
