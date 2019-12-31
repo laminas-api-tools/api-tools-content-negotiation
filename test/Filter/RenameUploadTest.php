@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Filter;
+namespace Laminas\ApiTools\ContentNegotiation\Filter;
 
 use DirectoryIterator;
+use Laminas\ApiTools\ContentNegotiation\Request;
+use Laminas\Http\Request as HttpRequest;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Http\Request as HttpRequest;
-use ZF\ContentNegotiation\Request;
 
 class RenameUploadTest extends TestCase
 {
     public function setUp()
     {
-        $this->tmpDir    = sys_get_temp_dir() . '/zf-content-negotiation-filter';
+        $this->tmpDir    = sys_get_temp_dir() . '/api-tools-content-negotiation-filter';
         $this->uploadDir = $this->tmpDir . '/upload';
         $this->targetDir = $this->tmpDir . '/target';
         $this->tearDown();
@@ -43,7 +45,7 @@ class RenameUploadTest extends TestCase
 
     public function createUploadFile()
     {
-        $filename = tempnam($this->uploadDir, 'zfc');
+        $filename = tempnam($this->uploadDir, 'laminasc');
         file_put_contents($filename, sprintf('File created by %s', __CLASS__));
 
         $file = array(
