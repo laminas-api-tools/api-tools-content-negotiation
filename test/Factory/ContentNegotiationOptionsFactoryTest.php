@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation\Factory;
+namespace LaminasTest\ApiTools\ContentNegotiation\Factory;
 
+use Laminas\ApiTools\ContentNegotiation\Factory\ContentNegotiationOptionsFactory;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\ServiceManager\ServiceManager;
-use ZF\ContentNegotiation\Factory\ContentNegotiationOptionsFactory;
 
 class ContentNegotiationOptionsFactoryTest extends TestCase
 {
     public function testCreateServiceShouldReturnContentNegotiationOptionsInstance()
     {
         $config = [
-            'zf-content-negotiation' => [
+            'api-tools-content-negotiation' => [
                 'accept_whitelist' => [],
             ],
         ];
@@ -27,6 +29,6 @@ class ContentNegotiationOptionsFactoryTest extends TestCase
 
         $service = $factory($serviceManager, 'ContentNegotiationOptions');
 
-        $this->assertInstanceOf('ZF\ContentNegotiation\ContentNegotiationOptions', $service);
+        $this->assertInstanceOf('Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions', $service);
     }
 }
