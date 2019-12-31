@@ -1,10 +1,10 @@
-ZF Content Negotiation
+Laminas Content Negotiation
 ======================
 
-[![Build Status](https://travis-ci.org/zfcampus/zf-content-negotiation.png?branch=master)](https://travis-ci.org/zfcampus/zf-content-negotiation)
-[![Coverage Status](https://coveralls.io/repos/zfcampus/zf-content-negotation/badge.png?branch=master)](https://coveralls.io/r/zfcampus/zf-content-negotation)
+[![Build Status](https://travis-ci.org/laminas-api-tools/api-tools-content-negotiation.png?branch=master)](https://travis-ci.org/laminas-api-tools/api-tools-content-negotiation)
+[![Coverage Status](https://coveralls.io/repos/laminas-api-tools/api-tools-content-negotation/badge.png?branch=master)](https://coveralls.io/r/laminas-api-tools/api-tools-content-negotation)
 
-Module for automating content negotiation tasks within a Zend Framework 2
+Module for automating content negotiation tasks within a Laminas
 application.
 
 Allows the following:
