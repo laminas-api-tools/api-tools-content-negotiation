@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
 use ArrayIterator;
 use ArrayObject;
+use Laminas\ApiTools\ContentNegotiation\JsonModel;
+use Laminas\ApiTools\Hal\Collection as HalCollection;
+use Laminas\ApiTools\Hal\Entity as HalEntity;
 use PHPUnit\Framework\TestCase;
-use ZF\ContentNegotiation\JsonModel;
-use ZF\Hal\Collection as HalCollection;
-use ZF\Hal\Entity as HalEntity;
 
 class JsonModelTest extends TestCase
 {
@@ -63,7 +65,7 @@ class JsonModelTest extends TestCase
         // Provide data that cannot be serialized to JSON
         $data = ['foo' => pack('H*', 'c32e')];
         $jsonModel = new JsonModel($data);
-        $this->expectException('ZF\ContentNegotiation\Exception\InvalidJsonException');
+        $this->expectException('Laminas\ApiTools\ContentNegotiation\Exception\InvalidJsonException');
         $jsonModel->serialize();
     }
 

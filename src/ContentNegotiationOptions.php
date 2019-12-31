@@ -1,12 +1,14 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2018 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Stdlib\AbstractOptions;
+use Laminas\Stdlib\AbstractOptions;
 
 class ContentNegotiationOptions extends AbstractOptions
 {
@@ -66,7 +68,7 @@ class ContentNegotiationOptions extends AbstractOptions
     /**
      * This method uses the config keys given in $keyToNormalize to merge
      * the config.
-     * It uses Zend's default approach of merging configs, by merging them with
+     * It uses Laminas's default approach of merging configs, by merging them with
      * `array_merge_recursive()`.
      *
      * @param array $config
@@ -121,10 +123,10 @@ class ContentNegotiationOptions extends AbstractOptions
      * backwards compatibility with old options (even though dash-separated
      * were previously ignored!).
      *
-     * @see \Zend\Stdlib\ParameterObject::__set()
+     * @see \Laminas\Stdlib\ParameterObject::__set()
      * @param string $key
      * @param mixed $value
-     * @throws \Zend\Stdlib\Exception\BadMethodCallException
+     * @throws \Laminas\Stdlib\Exception\BadMethodCallException
      * @return void
      */
     public function __set($key, $value)
@@ -139,9 +141,9 @@ class ContentNegotiationOptions extends AbstractOptions
      * backwards compatibility with old options (even though dash-separated
      * were previously ignored!).
      *
-     * @see \Zend\Stdlib\ParameterObject::__get()
+     * @see \Laminas\Stdlib\ParameterObject::__get()
      * @param string $key
-     * @throws \Zend\Stdlib\Exception\BadMethodCallException
+     * @throws \Laminas\Stdlib\Exception\BadMethodCallException
      * @return mixed
      */
     public function __get($key)

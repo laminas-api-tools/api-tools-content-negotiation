@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\Request;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
-use ZF\ContentNegotiation\Request;
 
 class RequestTest extends TestCase
 {
@@ -19,12 +21,12 @@ class RequestTest extends TestCase
 
     public function testIsAnHttpRequest()
     {
-        $this->assertInstanceOf('Zend\Http\Request', $this->request);
+        $this->assertInstanceOf('Laminas\Http\Request', $this->request);
     }
 
     public function testIsAPhpEnvironmentHttpRequest()
     {
-        $this->assertInstanceOf('Zend\Http\PhpEnvironment\Request', $this->request);
+        $this->assertInstanceOf('Laminas\Http\PhpEnvironment\Request', $this->request);
     }
 
     public function testDefinesAGetContentAsStreamMethod()
