@@ -1,16 +1,18 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\ContentTypeListener;
+use Laminas\Http\Request;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Router\RouteMatch;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Http\Request;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\RouteMatch;
-use ZF\ContentNegotiation\ContentTypeListener;
 
 class ContentTypeListenerTest extends TestCase
 {
@@ -46,7 +48,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch(new RouteMatch(array()));
 
         $result = $listener($event);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $result);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
         $this->assertContains('JSON decoding', $problem->detail);
