@@ -1,13 +1,15 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector;
-use Zend\Mvc\MvcEvent;
+use Laminas\Mvc\Controller\Plugin\AcceptableViewModelSelector;
+use Laminas\Mvc\MvcEvent;
 
 class Module
 {
@@ -17,9 +19,9 @@ class Module
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/ZF/ContentNegotiation/',
+                    __NAMESPACE__ => __DIR__ . '/src/Laminas/ContentNegotiation/',
                 ),
             ),
         );
@@ -46,12 +48,12 @@ class Module
 
         $sem = $em->getSharedManager();
         $sem->attach(
-            'Zend\Stdlib\DispatchableInterface',
+            'Laminas\Stdlib\DispatchableInterface',
             MvcEvent::EVENT_DISPATCH,
-            $services->get('ZF\ContentNegotiation\AcceptListener'),
+            $services->get('Laminas\ApiTools\ContentNegotiation\AcceptListener'),
             -10
         );
-        $sem->attachAggregate($services->get('ZF\ContentNegotiation\AcceptFilterListener'));
-        $sem->attachAggregate($services->get('ZF\ContentNegotiation\ContentTypeFilterListener'));
+        $sem->attachAggregate($services->get('Laminas\ApiTools\ContentNegotiation\AcceptFilterListener'));
+        $sem->attachAggregate($services->get('Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener'));
     }
 }

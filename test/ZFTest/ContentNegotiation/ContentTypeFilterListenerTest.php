@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener;
+use Laminas\EventManager\SharedEventManager;
+use Laminas\Http\Request;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Router\RouteMatch;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\EventManager\SharedEventManager;
-use Zend\Http\Request;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\RouteMatch;
-use ZF\ContentNegotiation\ContentTypeFilterListener;
 
 class ContentTypeFilterListenerTest extends TestCase
 {
@@ -33,9 +35,9 @@ class ContentTypeFilterListenerTest extends TestCase
 
     public function testListenerDoesNothingIfRequestContentTypeIsInControllerWhitelist()
     {
-        $contentType = 'application/vnd.zf.v1.foo+json';
+        $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig(array(
-            'ZFTest\ContentNegotiation\TestAsset\ContentTypeController' => array(
+            'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => array(
                 $contentType,
             ),
         ));
@@ -45,9 +47,9 @@ class ContentTypeFilterListenerTest extends TestCase
 
     public function testListenerReturnsApiProblemResponseIfRequestContentTypeIsNotInControllerWhitelist()
     {
-        $contentType = 'application/vnd.zf.v1.foo+json';
+        $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig(array(
-            'ZFTest\ContentNegotiation\TestAsset\ContentTypeController' => array(
+            'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => array(
                 'application/xml',
             ),
         ));
@@ -56,7 +58,7 @@ class ContentTypeFilterListenerTest extends TestCase
         $request->setContent('<?xml version="1.0"?><foo><bar>baz</bar></foo>');
 
         $response = $this->listener->onDispatch($this->event);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $response);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $response);
         $this->assertContains('Invalid content-type', $response->getApiProblem()->detail);
     }
 
@@ -64,7 +66,7 @@ class ContentTypeFilterListenerTest extends TestCase
     {
         $events = new SharedEventManager();
         $this->listener->attachShared($events);
-        $listeners = $events->getListeners('Zend\Stdlib\DispatchableInterface', 'dispatch');
+        $listeners = $events->getListeners('Laminas\Stdlib\DispatchableInterface', 'dispatch');
         $this->assertEquals(1, count($listeners));
         $this->assertTrue($listeners->hasPriority(100));
         $callback = $listeners->getIterator()->current()->getCallback();

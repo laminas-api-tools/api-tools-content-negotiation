@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector;
-use Zend\Mvc\InjectApplicationEventInterface;
-use Zend\Mvc\MvcEvent;
-use Zend\View\Model\ModelInterface as ViewModelInterface;
-use ZF\ApiProblem\ApiProblem;
-use ZF\ApiProblem\ApiProblemResponse;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\Mvc\Controller\Plugin\AcceptableViewModelSelector;
+use Laminas\Mvc\InjectApplicationEventInterface;
+use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\ModelInterface as ViewModelInterface;
 
 class AcceptListener
 {
@@ -73,9 +75,9 @@ class AcceptListener
         }
         $this->selector->setController($controller);
 
-        $criteria = $e->getParam('ZFContentNegotiation');
+        $criteria = $e->getParam('LaminasContentNegotiation');
 
-        // If the criteria from the ZFContentNegotiation parameter is a string,
+        // If the criteria from the LaminasContentNegotiation parameter is a string,
         // attempt to get it via a selector.
         if (is_string($criteria)) {
             $criteria = $this->getCriteria($criteria);
@@ -83,7 +85,7 @@ class AcceptListener
 
         // If we have no criteria, derive it from configuration and/or any set fallbacks
         if (!$criteria) {
-            $fallbackConfig = $e->getParam('ZFContentNegotiationFallback');
+            $fallbackConfig = $e->getParam('LaminasContentNegotiationFallback');
             $controllerName = $e->getRouteMatch()->getParam('controller');
 
             $criteria = $this->getSelectorCriteria($fallbackConfig, $controllerName);
