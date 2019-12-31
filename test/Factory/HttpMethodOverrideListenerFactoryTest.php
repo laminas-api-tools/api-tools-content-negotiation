@@ -1,18 +1,20 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation\Factory;
+namespace LaminasTest\ApiTools\ContentNegotiation\Factory;
 
+use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
+use Laminas\ApiTools\ContentNegotiation\Factory\HttpMethodOverrideListenerFactory;
+use Laminas\ApiTools\ContentNegotiation\HttpMethodOverrideListener;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit_Framework_TestCase as TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\ServiceManager;
-use ZF\ContentNegotiation\ContentNegotiationOptions;
-use ZF\ContentNegotiation\Factory\HttpMethodOverrideListenerFactory;
-use ZF\ContentNegotiation\HttpMethodOverrideListener;
 
 class HttpMethodOverrideListenerFactoryTest extends TestCase
 {
