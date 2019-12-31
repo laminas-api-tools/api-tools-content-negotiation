@@ -1,13 +1,15 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Factory;
+namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
 use Interop\Container\ContainerInterface;
-use ZF\ContentNegotiation\ContentNegotiationOptions;
+use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
 
 class ContentNegotiationOptionsFactory
 {
@@ -21,11 +23,11 @@ class ContentNegotiationOptionsFactory
     }
 
     /**
-     * Attempt to retrieve the zf-content-negotiation configuration.
+     * Attempt to retrieve the api-tools-content-negotiation configuration.
      *
      * - Consults the container's 'config' service, returning an empty array
      *   if not found.
-     * - Validates that the zf-content-negotiation key exists, and evaluates
+     * - Validates that the api-tools-content-negotiation key exists, and evaluates
      *   to an array; if not,returns an empty array.
      *
      * @param ContainerInterface $container
@@ -39,12 +41,12 @@ class ContentNegotiationOptionsFactory
 
         $config = $container->get('config');
 
-        if (! isset($config['zf-content-negotiation'])
-            || ! is_array($config['zf-content-negotiation'])
+        if (! isset($config['api-tools-content-negotiation'])
+            || ! is_array($config['api-tools-content-negotiation'])
         ) {
             return [];
         }
 
-        return $config['zf-content-negotiation'];
+        return $config['api-tools-content-negotiation'];
     }
 }
