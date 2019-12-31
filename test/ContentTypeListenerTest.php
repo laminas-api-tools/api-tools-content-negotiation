@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\ContentTypeListener;
+use Laminas\ApiTools\ContentNegotiation\MultipartContentParser;
+use Laminas\ApiTools\ContentNegotiation\Request as ContentNegotiationRequest;
+use Laminas\Http\Request;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Router\RouteMatch;
+use Laminas\Stdlib\Parameters;
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionObject;
-use Zend\Http\Request;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\RouteMatch;
-use Zend\Stdlib\Parameters;
-use ZF\ContentNegotiation\ContentTypeListener;
-use ZF\ContentNegotiation\MultipartContentParser;
-use ZF\ContentNegotiation\Request as ContentNegotiationRequest;
 
 class ContentTypeListenerTest extends TestCase
 {
@@ -51,7 +53,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch(new RouteMatch([]));
 
         $result = $listener($event);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $result);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
         $this->assertContains('JSON decoding', $problem->detail);
@@ -75,7 +77,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch(new RouteMatch([]));
 
         $result = $listener($event);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $result);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
         $this->assertContains('JSON decoding', $problem->detail);
@@ -110,7 +112,7 @@ class ContentTypeListenerTest extends TestCase
         $listener = $this->listener;
         $result = $listener($event);
 
-        $parameterData = $event->getParam('ZFContentNegotiationParameterData');
+        $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params = $parameterData->getBodyParams();
         $this->assertEquals([
             'mime_type' => 'md',
@@ -126,7 +128,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertArrayHasKey('size', $file);
         $this->assertArrayHasKey('type', $file);
         $this->assertEquals('README.md', $file['name']);
-        $this->assertRegexp('/^zfc/', basename($file['tmp_name']));
+        $this->assertRegexp('/^laminasc/', basename($file['tmp_name']));
         $this->assertTrue(file_exists($file['tmp_name']));
     }
 
@@ -150,7 +152,7 @@ class ContentTypeListenerTest extends TestCase
         $listener = $this->listener;
         $result = $listener($event);
 
-        $parameterData = $event->getParam('ZFContentNegotiationParameterData');
+        $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params = $parameterData->getBodyParams();
         $this->assertEquals([
             'mime_type' => 'md',
@@ -166,7 +168,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertArrayHasKey('size', $file);
         $this->assertArrayHasKey('type', $file);
         $this->assertEquals('README.md', $file['name']);
-        $this->assertRegexp('/^zfc/', basename($file['tmp_name']));
+        $this->assertRegexp('/^laminasc/', basename($file['tmp_name']));
         $this->assertTrue(file_exists($file['tmp_name']));
     }
 
@@ -181,7 +183,7 @@ class ContentTypeListenerTest extends TestCase
         $request->setContent(file_get_contents(__DIR__ . '/TestAsset/multipart-form-data.txt'));
 
         $target = new TestAsset\EventTarget();
-        $events = $this->getMock('Zend\EventManager\EventManagerInterface');
+        $events = $this->getMock('Laminas\EventManager\EventManagerInterface');
         $events->expects($this->once())
             ->method('attach')
             ->with(
@@ -203,7 +205,7 @@ class ContentTypeListenerTest extends TestCase
     public function testOnFinishWillRemoveAnyUploadFilesUploadedByTheListener()
     {
         $tmpDir  = MultipartContentParser::getUploadTempDir();
-        $tmpFile = tempnam($tmpDir, 'zfc');
+        $tmpFile = tempnam($tmpDir, 'laminasc');
         file_put_contents($tmpFile, 'File created by ' . __CLASS__);
 
         $files = new Parameters([
@@ -260,7 +262,7 @@ class ContentTypeListenerTest extends TestCase
     {
         $tmpDir  = sys_get_temp_dir() . '/' . str_replace('\\', '_', __CLASS__);
         mkdir($tmpDir);
-        $tmpFile = tempnam($tmpDir, 'zfc');
+        $tmpFile = tempnam($tmpDir, 'laminasc');
 
         $files = new Parameters([
             'test' => [
@@ -301,7 +303,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals([], $params->getBodyParams());
     }
 
@@ -342,7 +344,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals([], $params->getBodyParams());
     }
 
@@ -383,7 +385,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals(['foo' => 'bar'], $params->getBodyParams());
     }
 
@@ -424,7 +426,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals(['foo' => 'bar'], $params->getBodyParams());
     }
 
@@ -465,7 +467,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals(['foo' => 'bar'], $params->getBodyParams());
     }
 
@@ -497,7 +499,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
         $this->assertEquals(['foo' => 'bar foo'], $params->getBodyParams());
     }
 
@@ -521,7 +523,7 @@ class ContentTypeListenerTest extends TestCase
         $listener = $this->listener;
         $result = $listener($event);
 
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $result);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $result);
         $this->assertEquals(400, $result->getStatusCode());
         $details = $result->getApiProblem()->toArray();
         $this->assertContains('does not contain a "name" field', $details['detail']);
@@ -541,7 +543,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch(new RouteMatch([]));
         $listener = $this->listener;
         $result = $listener($event);
-        $parameterData = $event->getParam('ZFContentNegotiationParameterData');
+        $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params = $parameterData->getBodyParams();
         $this->assertEquals([
             'string_value' => 'string_value_with&amp;ersand',
@@ -586,7 +588,7 @@ class ContentTypeListenerTest extends TestCase
 
         $result = $listener($event);
         $this->assertNull($result);
-        $params = $event->getParam('ZFContentNegotiationParameterData');
+        $params = $event->getParam('LaminasContentNegotiationParameterData');
 
         $expected = [
             'foo' => 'bar',
