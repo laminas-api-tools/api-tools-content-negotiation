@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Factory;
+namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use ZF\ContentNegotiation\AcceptFilterListener;
+use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class AcceptFilterListenerFactory implements FactoryInterface
 {
@@ -19,8 +21,8 @@ class AcceptFilterListenerFactory implements FactoryInterface
     {
         $listener = new AcceptFilterListener();
 
-        /* @var $options \ZF\ContentNegotiation\ContentNegotiationOptions */
-        $options = $serviceLocator->get('ZF\ContentNegotiation\ContentNegotiationOptions');
+        /* @var $options \Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions */
+        $options = $serviceLocator->get('Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions');
 
         $listener->setConfig($options->getAcceptWhitelist());
 

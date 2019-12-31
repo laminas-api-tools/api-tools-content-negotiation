@@ -1,24 +1,25 @@
 {
-    "name": "zfcampus/zf-content-negotiation",
-    "description": "ZF2 Module providing content-negotiation features",
-    "type": "library",
+    "name": "laminas-api-tools/api-tools-content-negotiation",
+    "description": "Laminas Module providing content-negotiation features",
     "license": "BSD-3-Clause",
     "keywords": [
-        "zf2",
-        "zend",
+        "laminas",
+        "api-tools",
         "module",
         "content-negotiation"
     ],
-    "homepage": "http://apigility.org/",
+    "homepage": "https://api-tools.getlaminas.org",
     "support": {
-        "email": "apigility-users@zend.com",
-        "irc": "irc://irc.freenode.net/apigility",
-        "source": "https://github.com/zfcampus/zf-content-negotiation",
-        "issues": "https://github.com/zfcampus/zf-content-negotiation/issues"
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "issues": "https://github.com/laminas-api-tools/api-tools-content-negotiation/issues",
+        "source": "https://github.com/laminas-api-tools/api-tools-content-negotiation",
+        "rss": "https://github.com/laminas-api-tools/api-tools-content-negotiation/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
     },
-    "repositories": [
-        { "type": "composer", "url": "https://packages.zendframework.com" }
-    ],
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.1-dev",
@@ -27,29 +28,30 @@
     },
     "require": {
         "php": ">=5.5",
-        "zendframework/zend-eventmanager": "~2.3",
-        "zendframework/zend-filter": "~2.3",
-        "zendframework/zend-json": "~2.3",
-        "zendframework/zend-mvc": "~2.3",
-        "zendframework/zend-servicemanager": "~2.3",
-        "zendframework/zend-stdlib": "~2.3",
-        "zendframework/zend-validator": "~2.3",
-        "zendframework/zend-view": "~2.3",
-        "zfcampus/zf-api-problem": "~1.0"
+        "laminas-api-tools/api-tools-api-problem": "~1.0",
+        "laminas/laminas-eventmanager": "~2.3",
+        "laminas/laminas-filter": "~2.3",
+        "laminas/laminas-json": "~2.3",
+        "laminas/laminas-mvc": "~2.3",
+        "laminas/laminas-servicemanager": "~2.3",
+        "laminas/laminas-stdlib": "~2.3",
+        "laminas/laminas-validator": "~2.3",
+        "laminas/laminas-view": "~2.3",
+        "laminas/laminas-zendframework-bridge": "^1.0"
     },
     "require-dev": {
-        "phpunit/PHPUnit": "~4.7",
-        "squizlabs/php_codesniffer": "^2.3.1",
-        "zendframework/zend-http": "~2.3",
-        "zendframework/zend-loader": "~2.3",
-        "zfcampus/zf-hal": "~1.0"
+        "laminas-api-tools/api-tools-hal": "~1.0",
+        "laminas/laminas-http": "~2.3",
+        "laminas/laminas-loader": "~2.3",
+        "phpunit/phpunit": "~4.7",
+        "squizlabs/php_codesniffer": "^2.3.1"
     },
     "suggest": {
-        "zendframework/zend-console": "~2.3, if you intend to use the RequestFactory"
+        "laminas/laminas-console": "~2.3, if you intend to use the RequestFactory"
     },
     "autoload": {
         "psr-4": {
-            "ZF\\ContentNegotiation\\": "src/"
+            "Laminas\\ApiTools\\ContentNegotiation\\": "src/"
         },
         "classmap": [
             "Module.php"
@@ -57,7 +59,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ZFTest\\ContentNegotiation\\": "test/"
+            "LaminasTest\\ApiTools\\ContentNegotiation\\": "test/"
         }
+    },
+    "replace": {
+        "zfcampus/zf-content-negotiation": "self.version"
     }
 }

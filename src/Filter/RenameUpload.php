@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation\Filter;
+namespace Laminas\ApiTools\ContentNegotiation\Filter;
 
-use Zend\Filter\Exception\RuntimeException as FilterRuntimeException;
-use Zend\Filter\File\RenameUpload as BaseFilter;
-use Zend\Stdlib\ErrorHandler;
-use Zend\Stdlib\RequestInterface;
+use Laminas\Filter\Exception\RuntimeException as FilterRuntimeException;
+use Laminas\Filter\File\RenameUpload as BaseFilter;
+use Laminas\Stdlib\ErrorHandler;
+use Laminas\Stdlib\RequestInterface;
 
 class RenameUpload extends BaseFilter
 {
