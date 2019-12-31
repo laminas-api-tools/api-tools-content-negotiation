@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation;
+namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ContentNegotiation\AcceptListener;
+use Laminas\Http\Request;
+use Laminas\Mvc\Controller\PluginManager as ControllerPluginManager;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
-use Zend\Http\Request;
-use Zend\Mvc\Controller\PluginManager as ControllerPluginManager;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceManager;
-use ZF\ContentNegotiation\AcceptListener;
 
 class AcceptListenerTest extends TestCase
 {
@@ -24,11 +26,11 @@ class AcceptListenerTest extends TestCase
 
         $this->listener   = new AcceptListener($selector, [
             'controllers' => [
-                'ZFTest\ContentNegotiation\TestAsset\ContentTypeController' => 'Json',
+                'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => 'Json',
             ],
             'selectors' => [
                 'Json' => [
-                    'Zend\View\Model\JsonModel' => [
+                    'Laminas\View\Model\JsonModel' => [
                         'application/json',
                         'application/*+json',
                     ],
@@ -54,7 +56,7 @@ class AcceptListenerTest extends TestCase
         $this->event->setResult(['foo' => 'bar']);
 
         $response = $listener($this->event);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $response);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $response);
         $this->assertEquals(406, $response->getApiProblem()->status);
         $this->assertContains('Unable to resolve', $response->getApiProblem()->detail);
     }
@@ -67,7 +69,7 @@ class AcceptListenerTest extends TestCase
 
         $listener($this->event);
         $result = $this->event->getResult();
-        $this->assertInstanceOf('Zend\View\Model\ModelInterface', $result);
+        $this->assertInstanceOf('Laminas\View\Model\ModelInterface', $result);
     }
 
     /**
@@ -75,7 +77,7 @@ class AcceptListenerTest extends TestCase
      */
     public function testShouldExitEarlyIfNonHttpRequestPresentInEvent()
     {
-        $request = $this->getMockBuilder('Zend\Stdlib\RequestInterface')->getMock();
+        $request = $this->getMockBuilder('Laminas\Stdlib\RequestInterface')->getMock();
         $this->event->setRequest($request);
 
         $listener = $this->listener;

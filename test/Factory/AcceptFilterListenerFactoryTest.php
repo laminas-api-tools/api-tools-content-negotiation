@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\ContentNegotiation\Factory;
+namespace LaminasTest\ApiTools\ContentNegotiation\Factory;
 
+use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
+use Laminas\ApiTools\ContentNegotiation\Factory\AcceptFilterListenerFactory;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
-use Zend\ServiceManager\ServiceManager;
-use ZF\ContentNegotiation\ContentNegotiationOptions;
-use ZF\ContentNegotiation\Factory\AcceptFilterListenerFactory;
 
 class AcceptFilterListenerFactoryTest extends TestCase
 {
@@ -17,7 +19,7 @@ class AcceptFilterListenerFactoryTest extends TestCase
     {
         $serviceManager = new ServiceManager();
         $serviceManager->setService(
-            'ZF\ContentNegotiation\ContentNegotiationOptions',
+            'Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions',
             new ContentNegotiationOptions()
         );
 
@@ -25,6 +27,6 @@ class AcceptFilterListenerFactoryTest extends TestCase
 
         $service = $factory($serviceManager, 'AcceptFilterListener');
 
-        $this->assertInstanceOf('ZF\ContentNegotiation\AcceptFilterListener', $service);
+        $this->assertInstanceOf('Laminas\ApiTools\ContentNegotiation\AcceptFilterListener', $service);
     }
 }
