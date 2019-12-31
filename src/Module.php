@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\ContentNegotiation;
+namespace Laminas\ApiTools\ContentNegotiation;
 
-use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\DispatchableInterface;
-use ZF\ContentNegotiation\AcceptListener;
-use ZF\ContentNegotiation\AcceptFilterListener;
-use ZF\ContentNegotiation\ContentTypeFilterListener;
-use ZF\ContentNegotiation\ContentTypeListener;
+use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
+use Laminas\ApiTools\ContentNegotiation\AcceptListener;
+use Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener;
+use Laminas\ApiTools\ContentNegotiation\ContentTypeListener;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Stdlib\DispatchableInterface;
 
 class Module
 {
