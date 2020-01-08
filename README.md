@@ -1,6 +1,6 @@
 # Laminas Content Negotiation
 
-[![Build Status](https://travis-ci.org/laminas-api-tools/api-tools-content-negotiation.svg?branch=master)](https://travis-ci.org/laminas-api-tools/api-tools-content-negotiation)
+[![Build Status](https://travis-ci.com/laminas-api-tools/api-tools-content-negotiation.svg?branch=master)](https://travis-ci.com/laminas-api-tools/api-tools-content-negotiation)
 [![Coverage Status](https://coveralls.io/repos/github/laminas-api-tools/api-tools-content-negotiation/badge.svg?branch=master)](https://coveralls.io/github/laminas-api-tools/api-tools-content-negotiation?branch=master)
 
 ## Introduction
