@@ -73,6 +73,6 @@
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
     "replace": {
-        "zfcampus/zf-content-negotiation": "self.version"
+        "zfcampus/zf-content-negotiation": "^1.4.0"
     }
 }
