@@ -92,6 +92,7 @@ class RenameUploadTest extends TestCase
     }
 
     /**
+     * @param string $method
      * @dataProvider uploadMethods
      */
     public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests(string $method)
@@ -105,7 +106,7 @@ class RenameUploadTest extends TestCase
         $filter->setRequest($request);
 
         $result = $filter->filter($file);
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('tmp_name', $result);
         $this->assertEquals($target, $result['tmp_name']);
 

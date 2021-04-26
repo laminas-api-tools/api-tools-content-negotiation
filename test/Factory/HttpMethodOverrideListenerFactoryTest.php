@@ -7,10 +7,13 @@ use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
 use Laminas\ApiTools\ContentNegotiation\Factory\HttpMethodOverrideListenerFactory;
 use Laminas\ApiTools\ContentNegotiation\HttpMethodOverrideListener;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class HttpMethodOverrideListenerFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testCreateServiceShouldReturnContentTypeFilterListenerInstance()
     {
         /** @var ContentNegotiationOptions|ObjectProphecy $options */

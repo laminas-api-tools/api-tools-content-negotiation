@@ -35,7 +35,7 @@ class JsonModelTest extends TestCase
         ]);
         $json      = $jsonModel->serialize();
         $data      = json_decode($json, true);
-        $this->assertInternalType('array', $data);
+        $this->assertIsArray($data);
         $this->assertArrayHasKey('id', $data);
         $this->assertEquals(2, $data['id']);
         $this->assertArrayHasKey('title', $data);

@@ -18,7 +18,7 @@ class AcceptListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $plugins  = new ControllerPluginManager(new ServiceManager());
         $selector = $plugins->get('AcceptableViewModelSelector');
@@ -57,7 +57,7 @@ class AcceptListenerTest extends TestCase
         $response = $listener($this->event);
         $this->assertInstanceOf(ApiProblemResponse::class, $response);
         $this->assertEquals(406, $response->getApiProblem()->status);
-        $this->assertContains('Unable to resolve', $response->getApiProblem()->detail);
+        $this->assertStringContainsString('Unable to resolve', $response->getApiProblem()->detail);
     }
 
     public function testReturnADefaultViewModelIfNoCriteriaSpecifiedForAController()

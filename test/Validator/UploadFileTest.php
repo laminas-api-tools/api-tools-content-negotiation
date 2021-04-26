@@ -30,6 +30,7 @@ class UploadFileTest extends TestCase
     }
 
     /**
+     * @param string $method
      * @dataProvider uploadMethods
      */
     public function testDoesNotMarkUploadFileAsInvalidForPutAndPatchHttpRequests(string $method)

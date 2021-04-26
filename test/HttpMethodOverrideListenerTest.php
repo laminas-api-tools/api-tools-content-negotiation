@@ -50,6 +50,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     }
 
     /**
+     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListener(string $method)
@@ -69,6 +70,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     }
 
     /**
+     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig(string $method)
@@ -86,13 +88,14 @@ class HttpMethodOverrideListenerTest extends TestCase
         $this->assertInstanceOf(ApiProblemResponse::class, $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
-        $this->assertContains(
+        $this->assertStringContainsString(
             'Overriding PATCH method with X-HTTP-Method-Override header is not allowed',
             $problem->detail
         );
     }
 
     /**
+     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue(string $method)
@@ -110,7 +113,7 @@ class HttpMethodOverrideListenerTest extends TestCase
         $this->assertInstanceOf(ApiProblemResponse::class, $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
-        $this->assertContains(
+        $this->assertStringContainsString(
             sprintf('Illegal override method %s in X-HTTP-Method-Override header', $method),
             $problem->detail
         );

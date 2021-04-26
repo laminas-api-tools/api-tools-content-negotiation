@@ -5,11 +5,14 @@ namespace LaminasTest\ApiTools\ContentNegotiation;
 use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
 use Laminas\Http\Headers;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionMethod;
 
 class AcceptFilterListenerTest extends TestCase
 {
-    protected function setUp()
+    use ProphecyTrait;
+
+    protected function setUp(): void
     {
         $this->listener = new AcceptFilterListener();
     }
