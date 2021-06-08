@@ -21,7 +21,7 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testSetNormalizesDashSeparatedKeysToUnderscoreSeparated(string $key, string $normalized)
+    public function testSetNormalizesDashSeparatedKeysToUnderscoreSeparated(string $key, string $normalized): void
     {
         $options         = new ContentNegotiationOptions();
         $options->{$key} = ['value'];
@@ -32,7 +32,7 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testConstructorAllowsDashSeparatedKeys(string $key, string $normalized)
+    public function testConstructorAllowsDashSeparatedKeys(string $key, string $normalized): void
     {
         $options = new ContentNegotiationOptions([$key => ['value']]);
         $this->assertEquals(['value'], $options->{$key});
@@ -42,7 +42,7 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testDashAndUnderscoreSeparatedValuesGetMerged(string $key, string $normalized)
+    public function testDashAndUnderscoreSeparatedValuesGetMerged(string $key, string $normalized): void
     {
         $keyValue        = 'valueKey';
         $normalizedValue = 'valueNormalized';

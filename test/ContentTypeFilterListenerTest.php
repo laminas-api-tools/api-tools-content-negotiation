@@ -24,12 +24,12 @@ class ContentTypeFilterListenerTest extends TestCase
         ]));
     }
 
-    public function testListenerDoesNothingIfNoConfigurationExistsForController()
+    public function testListenerDoesNothingIfNoConfigurationExistsForController(): void
     {
         $this->assertNull($this->listener->onRoute($this->event));
     }
 
-    public function testListenerDoesNothingIfRequestContentTypeIsInControllerWhitelist()
+    public function testListenerDoesNothingIfRequestContentTypeIsInControllerWhitelist(): void
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([
@@ -41,7 +41,7 @@ class ContentTypeFilterListenerTest extends TestCase
         $this->assertNull($this->listener->onRoute($this->event));
     }
 
-    public function testListenerReturnsApiProblemResponseIfRequestContentTypeIsNotInControllerWhitelist()
+    public function testListenerReturnsApiProblemResponseIfRequestContentTypeIsNotInControllerWhitelist(): void
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([
@@ -61,7 +61,7 @@ class ContentTypeFilterListenerTest extends TestCase
     /**
      * @group 66
      */
-    public function testCastsObjectBodyContentToStringBeforeWorkingWithIt()
+    public function testCastsObjectBodyContentToStringBeforeWorkingWithIt(): void
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([

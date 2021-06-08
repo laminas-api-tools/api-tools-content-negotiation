@@ -18,29 +18,29 @@ class RequestTest extends TestCase
         $this->request = new Request();
     }
 
-    public function testIsAnHttpRequest()
+    public function testIsAnHttpRequest(): void
     {
         $this->assertInstanceOf(\Laminas\Http\Request::class, $this->request);
     }
 
-    public function testIsAPhpEnvironmentHttpRequest()
+    public function testIsAPhpEnvironmentHttpRequest(): void
     {
         $this->assertInstanceOf(\Laminas\Http\PhpEnvironment\Request::class, $this->request);
     }
 
-    public function testDefinesAGetContentAsStreamMethod()
+    public function testDefinesAGetContentAsStreamMethod(): void
     {
         $this->assertTrue(method_exists($this->request, 'getContentAsStream'));
     }
 
-    public function testDefaultContentStreamIsPhpInputStream()
+    public function testDefaultContentStreamIsPhpInputStream(): void
     {
         $property = $this->getContentStreamReflectionProperty();
 
         $this->assertSame('php://input', $property->getValue($this->request));
     }
 
-    public function testCanSetStreamUriForContent()
+    public function testCanSetStreamUriForContent(): void
     {
         $property = $this->getContentStreamReflectionProperty();
 
@@ -50,14 +50,14 @@ class RequestTest extends TestCase
         $this->assertSame($expected, $property->getValue($this->request));
     }
 
-    public function testGetContentAsStreamReturnsResource()
+    public function testGetContentAsStreamReturnsResource(): void
     {
         $this->request->setContentStream('file://' . realpath(__FILE__));
         $stream = $this->request->getContentAsStream();
         $this->assertIsResource($stream);
     }
 
-    public function testReturnsPhpTemporaryStreamIfContentHasAlreadyBeenRetrieved()
+    public function testReturnsPhpTemporaryStreamIfContentHasAlreadyBeenRetrieved(): void
     {
         $r = new ReflectionObject($this->request);
         $p = $r->getProperty('content');

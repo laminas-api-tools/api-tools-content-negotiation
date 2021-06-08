@@ -13,6 +13,7 @@ class UploadFile extends BaseValidator
     /** @var null|RequestInterface */
     protected $request;
 
+    /** @return void */
     public function setRequest(RequestInterface $request)
     {
         $this->request = $request;

@@ -62,6 +62,7 @@ class UploadFileValidatorFactory implements FactoryInterface
      * Allow injecting options at build time; required for v2 compatibility.
      *
      * @param array $options
+     * @return void
      */
     public function setCreationOptions(array $options)
     {

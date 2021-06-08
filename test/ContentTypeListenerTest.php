@@ -57,7 +57,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 3
      * @dataProvider methodsWithBodies
      */
-    public function testJsonDecodeErrorsReturnsProblemResponse(string $method)
+    public function testJsonDecodeErrorsReturnsProblemResponse(string $method): void
     {
         $listener = $this->listener;
 
@@ -81,7 +81,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 3
      * @dataProvider methodsWithBodies
      */
-    public function testJsonDecodeStringErrorsReturnsProblemResponse(string $method)
+    public function testJsonDecodeStringErrorsReturnsProblemResponse(string $method): void
     {
         $listener = $this->listener;
 
@@ -114,7 +114,7 @@ class ContentTypeListenerTest extends TestCase
     /**
      * @dataProvider multipartFormDataMethods
      */
-    public function testCanDecodeMultipartFormDataRequestsForPutPatchAndDeleteOperations(string $method)
+    public function testCanDecodeMultipartFormDataRequestsForPutPatchAndDeleteOperations(string $method): void
     {
         $request = new Request();
         $request->setMethod($method);
@@ -129,7 +129,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch($this->createRouteMatch([]));
 
         $listener = $this->listener;
-        $result   = $listener($event);
+        $listener($event);
 
         $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params        = $parameterData->getBodyParams();
@@ -154,7 +154,7 @@ class ContentTypeListenerTest extends TestCase
     /**
      * @dataProvider multipartFormDataMethods
      */
-    public function testCanDecodeMultipartFormDataRequestsFromStreamsForPutAndPatchOperations(string $method)
+    public function testCanDecodeMultipartFormDataRequestsFromStreamsForPutAndPatchOperations(string $method): void
     {
         $request = new ContentNegotiationRequest();
         $request->setMethod($method);
@@ -169,7 +169,7 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch($this->createRouteMatch([]));
 
         $listener = $this->listener;
-        $result   = $listener($event);
+        $listener($event);
 
         $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params        = $parameterData->getBodyParams();
@@ -191,7 +191,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertTrue(file_exists($file['tmp_name']));
     }
 
-    public function testDecodingMultipartFormDataWithFileRegistersFileCleanupEventListener()
+    public function testDecodingMultipartFormDataWithFileRegistersFileCleanupEventListener(): void
     {
         $request = new Request();
         $request->setMethod('PATCH');
@@ -218,10 +218,10 @@ class ContentTypeListenerTest extends TestCase
         $event->setRouteMatch($this->createRouteMatch([]));
 
         $listener = $this->listener;
-        $result   = $listener($event);
+        $listener($event);
     }
 
-    public function testOnFinishWillRemoveAnyUploadFilesUploadedByTheListener()
+    public function testOnFinishWillRemoveAnyUploadFilesUploadedByTheListener(): void
     {
         $tmpDir  = MultipartContentParser::getUploadTempDir();
         $tmpFile = tempnam($tmpDir, 'laminasc');
@@ -255,7 +255,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertFileDoesNotExist($tmpFile);
     }
 
-    public function testOnFinishDoesNotRemoveUploadFilesTheListenerDidNotCreate()
+    public function testOnFinishDoesNotRemoveUploadFilesTheListenerDidNotCreate(): void
     {
         $tmpDir  = MultipartContentParser::getUploadTempDir();
         $tmpFile = tempnam($tmpDir, 'php');
@@ -281,7 +281,7 @@ class ContentTypeListenerTest extends TestCase
         unlink($tmpFile);
     }
 
-    public function testOnFinishDoesNotRemoveUploadFilesThatHaveBeenMoved()
+    public function testOnFinishDoesNotRemoveUploadFilesThatHaveBeenMoved(): void
     {
         $tmpDir = sys_get_temp_dir() . '/' . str_replace('\\', '_', self::class);
         mkdir($tmpDir);
@@ -311,7 +311,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 35
      * @dataProvider methodsWithBodies
      */
-    public function testWillNotAttemptToInjectNullValueForBodyParams(string $method)
+    public function testWillNotAttemptToInjectNullValueForBodyParams(string $method): void
     {
         $listener = $this->listener;
 
@@ -357,7 +357,7 @@ class ContentTypeListenerTest extends TestCase
     public function testWillNotAttemptToInjectNullValueForBodyParamsWhenContentIsWhitespace(
         string $method,
         string $content
-    ) {
+    ): void {
         $listener = $this->listener;
 
         $request = new Request();
@@ -399,7 +399,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 36
      * @dataProvider methodsWithLeadingWhitespace
      */
-    public function testWillHandleJsonContentWithLeadingWhitespace(string $method, string $content)
+    public function testWillHandleJsonContentWithLeadingWhitespace(string $method, string $content): void
     {
         $listener = $this->listener;
 
@@ -442,7 +442,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 36
      * @dataProvider methodsWithTrailingWhitespace
      */
-    public function testWillHandleJsonContentWithTrailingWhitespace(string $method, string $content)
+    public function testWillHandleJsonContentWithTrailingWhitespace(string $method, string $content): void
     {
         $listener = $this->listener;
 
@@ -485,7 +485,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 36
      * @dataProvider methodsWithLeadingAndTrailingWhitespace
      */
-    public function testWillHandleJsonContentWithLeadingAndTrailingWhitespace(string $method, string $content)
+    public function testWillHandleJsonContentWithLeadingAndTrailingWhitespace(string $method, string $content): void
     {
         $listener = $this->listener;
 
@@ -519,7 +519,7 @@ class ContentTypeListenerTest extends TestCase
      * @param mixed $content
      * @dataProvider methodsWithWhitespaceInsideBody
      */
-    public function testWillNotRemoveWhitespaceInsideBody(string $method, string $content)
+    public function testWillNotRemoveWhitespaceInsideBody(string $method, string $content): void
     {
         $listener = $this->listener;
 
@@ -541,7 +541,7 @@ class ContentTypeListenerTest extends TestCase
     /**
      * @group 42
      */
-    public function testReturns400ResponseWhenBodyPartIsMissingName()
+    public function testReturns400ResponseWhenBodyPartIsMissingName(): void
     {
         $request = new Request();
         $request->setMethod('PUT');
@@ -564,7 +564,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertStringContainsString('does not contain a "name" field', $details['detail']);
     }
 
-    public function testReturnsArrayWhenFieldNamesHaveArraySyntax()
+    public function testReturnsArrayWhenFieldNamesHaveArraySyntax(): void
     {
         $request = new Request();
         $request->setMethod('PUT');
@@ -576,8 +576,8 @@ class ContentTypeListenerTest extends TestCase
         $event = new MvcEvent();
         $event->setRequest($request);
         $event->setRouteMatch($this->createRouteMatch([]));
-        $listener      = $this->listener;
-        $result        = $listener($event);
+        $listener = $this->listener;
+        $listener($event);
         $parameterData = $event->getParam('LaminasContentNegotiationParameterData');
         $params        = $parameterData->getBodyParams();
         $this->assertEquals([
@@ -598,7 +598,7 @@ class ContentTypeListenerTest extends TestCase
      * @group 50
      * @dataProvider methodsWithBodies
      */
-    public function testMergesHalEmbeddedPropertiesIntoTopLevelObjectWhenDecodingHalJson(string $method)
+    public function testMergesHalEmbeddedPropertiesIntoTopLevelObjectWhenDecodingHalJson(string $method): void
     {
         $data = [
             'foo'       => 'bar',
@@ -655,7 +655,7 @@ class ContentTypeListenerTest extends TestCase
      * @dataProvider methodsWithStringContent
      * @param string|int $key
      */
-    public function testStringContentIsParsedCorrectlyToAnArray(string $method, string $data, $key)
+    public function testStringContentIsParsedCorrectlyToAnArray(string $method, string $data, $key): void
     {
         $listener = $this->listener;
 

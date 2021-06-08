@@ -32,7 +32,7 @@ class UploadFileTest extends TestCase
     /**
      * @dataProvider uploadMethods
      */
-    public function testDoesNotMarkUploadFileAsInvalidForPutAndPatchHttpRequests(string $method)
+    public function testDoesNotMarkUploadFileAsInvalidForPutAndPatchHttpRequests(string $method): void
     {
         $request = new HttpRequest();
         $request->setMethod($method);

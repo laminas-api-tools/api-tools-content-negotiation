@@ -15,20 +15,20 @@ use function pack;
 
 class JsonModelTest extends TestCase
 {
-    public function testSetVariables()
+    public function testSetVariables(): void
     {
         $jsonModel = new JsonModel(new TestAsset\ModelWithJson());
         $this->assertEquals('bar', $jsonModel->getVariable('foo'));
     }
 
-    public function testJsonModelIsAlwaysTerminal()
+    public function testJsonModelIsAlwaysTerminal(): void
     {
         $jsonModel = new JsonModel([]);
         $jsonModel->setTerminal(false);
         $this->assertTrue($jsonModel->terminate());
     }
 
-    public function testWillPullHalEntityFromPayloadToSerialize()
+    public function testWillPullHalEntityFromPayloadToSerialize(): void
     {
         $jsonModel = new JsonModel([
             'payload' => new HalEntity(['id' => 2, 'title' => 'Hello world'], 1),
@@ -42,7 +42,7 @@ class JsonModelTest extends TestCase
         $this->assertEquals('Hello world', $data['title']);
     }
 
-    public function testWillPullHalCollectionFromPayloadToSerialize()
+    public function testWillPullHalCollectionFromPayloadToSerialize(): void
     {
         $collection = [
             ['foo' => 'bar'],
@@ -58,7 +58,7 @@ class JsonModelTest extends TestCase
         $this->assertEquals($collection, $data);
     }
 
-    public function testWillRaiseExceptionIfErrorOccursEncodingJson()
+    public function testWillRaiseExceptionIfErrorOccursEncodingJson(): void
     {
         // Provide data that cannot be serialized to JSON
         $data      = ['foo' => pack('H*', 'c32e')];
@@ -70,7 +70,7 @@ class JsonModelTest extends TestCase
     /**
      * @group 17
      */
-    public function testCanSerializeTraversables()
+    public function testCanSerializeTraversables(): void
     {
         $variables = [
             'some'   => 'content',

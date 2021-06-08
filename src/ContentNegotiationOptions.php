@@ -141,6 +141,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param array $controllers
+     * @return void
      */
     public function setControllers(array $controllers)
     {
@@ -157,6 +158,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param array $selectors
+     * @return void
      */
     public function setSelectors(array $selectors)
     {
@@ -173,6 +175,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param array $whitelist
+     * @return void
      */
     public function setAcceptWhitelist(array $whitelist)
     {
@@ -189,6 +192,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param array $whitelist
+     * @return void
      */
     public function setContentTypeWhitelist(array $whitelist)
     {
@@ -205,6 +209,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param boolean $xHttpMethodOverrideEnabled
+     * @return void
      */
     public function setXHttpMethodOverrideEnabled($xHttpMethodOverrideEnabled)
     {
@@ -221,6 +226,7 @@ class ContentNegotiationOptions extends AbstractOptions
 
     /**
      * @param array $httpOverrideMethods
+     * @return void
      */
     public function setHttpOverrideMethods(array $httpOverrideMethods)
     {

@@ -94,7 +94,7 @@ class RenameUploadTest extends TestCase
     /**
      * @dataProvider uploadMethods
      */
-    public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests(string $method)
+    public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests(string $method): void
     {
         $target  = $this->targetDir . DIRECTORY_SEPARATOR . 'uploaded.txt';
         $file    = $this->createUploadFile();
