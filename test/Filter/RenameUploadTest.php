@@ -1,20 +1,28 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\Filter;
 
 use DirectoryIterator;
 use Laminas\Http\Request as HttpRequest;
 use PHPUnit\Framework\TestCase;
 
+use function file_exists;
+use function file_put_contents;
+use function filesize;
+use function is_dir;
+use function mkdir;
+use function rmdir;
+use function sprintf;
+use function sys_get_temp_dir;
+use function tempnam;
+use function unlink;
+
+use const DIRECTORY_SEPARATOR;
+use const UPLOAD_ERR_OK;
+
 class RenameUploadTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->tmpDir    = sys_get_temp_dir() . '/api-tools-content-negotiation-filter';
         $this->uploadDir = $this->tmpDir . '/upload';
@@ -25,7 +33,7 @@ class RenameUploadTest extends TestCase
         mkdir($this->targetDir);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if (! is_dir($this->tmpDir)) {
             return;
@@ -42,23 +50,22 @@ class RenameUploadTest extends TestCase
         rmdir($this->tmpDir);
     }
 
-    public function createUploadFile()
+    /** @psalm-return array<string, string|int> */
+    public function createUploadFile(): array
     {
         $filename = tempnam($this->uploadDir, 'laminasc');
-        file_put_contents($filename, sprintf('File created by %s', __CLASS__));
+        file_put_contents($filename, sprintf('File created by %s', self::class));
 
-        $file = [
+        return [
             'name'     => 'test.txt',
             'type'     => 'text/plain',
             'tmp_name' => $filename,
             'size'     => filesize($filename),
             'error'    => UPLOAD_ERR_OK,
         ];
-
-        return $file;
     }
 
-    public function removeDir($dir)
+    public function removeDir(string $dir): void
     {
         $it = new DirectoryIterator($dir);
         foreach ($it as $file) {
@@ -75,7 +82,8 @@ class RenameUploadTest extends TestCase
         rmdir($dir);
     }
 
-    public function uploadMethods()
+    /** @psalm-return array<string, array{0: string}> */
+    public function uploadMethods(): array
     {
         return [
             'put'   => ['PUT'],
@@ -86,7 +94,7 @@ class RenameUploadTest extends TestCase
     /**
      * @dataProvider uploadMethods
      */
-    public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests($method)
+    public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests(string $method)
     {
         $target  = $this->targetDir . DIRECTORY_SEPARATOR . 'uploaded.txt';
         $file    = $this->createUploadFile();

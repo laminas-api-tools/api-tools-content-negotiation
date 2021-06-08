@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\ControllerPlugin;
 
 use Laminas\ApiTools\ContentNegotiation\ParameterDataContainer;
@@ -16,6 +10,10 @@ use Laminas\Mvc\InjectApplicationEventInterface;
 
 class RouteParams extends AbstractPlugin
 {
+    /**
+     * @return array
+     * @throws RuntimeException If controller does not implement InjectApplicationEventInterface.
+     */
     public function __invoke()
     {
         $controller = $this->getController();

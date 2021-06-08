@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use JsonSerializable;
@@ -14,6 +8,15 @@ use Laminas\ApiTools\Hal\Entity as HalEntity;
 use Laminas\Json\Json;
 use Laminas\Stdlib\JsonSerializable as StdlibJsonSerializable;
 use Laminas\View\Model\JsonModel as BaseJsonModel;
+
+use function json_last_error;
+use function method_exists;
+
+use const JSON_ERROR_CTRL_CHAR;
+use const JSON_ERROR_DEPTH;
+use const JSON_ERROR_NONE;
+use const JSON_ERROR_STATE_MISMATCH;
+use const JSON_ERROR_UTF8;
 
 class JsonModel extends BaseJsonModel
 {
@@ -35,7 +38,8 @@ class JsonModel extends BaseJsonModel
      */
     public function setVariables($variables, $overwrite = false)
     {
-        if ($variables instanceof JsonSerializable
+        if (
+            $variables instanceof JsonSerializable
             || $variables instanceof StdlibJsonSerializable
         ) {
             $variables = $variables->jsonSerialize();
@@ -92,7 +96,7 @@ class JsonModel extends BaseJsonModel
         }
 
         if (null !== $this->jsonpCallback) {
-            return $this->jsonpCallback.'('.Json::encode($variables).');';
+            return $this->jsonpCallback . '(' . Json::encode($variables) . ');';
         }
 
         $serialized = Json::encode($variables);

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\Filter;
 
 use Laminas\Filter\Exception\RuntimeException as FilterRuntimeException;
@@ -13,16 +7,15 @@ use Laminas\Filter\File\RenameUpload as BaseFilter;
 use Laminas\Stdlib\ErrorHandler;
 use Laminas\Stdlib\RequestInterface;
 
+use function method_exists;
+use function rename;
+use function sprintf;
+
 class RenameUpload extends BaseFilter
 {
-    /**
-     * @var RequestInterface
-     */
+    /** @var RequestInterface */
     protected $request;
 
-    /**
-     * @param RequestInterface $request
-     */
     public function setRequest(RequestInterface $request)
     {
         $this->request = $request;
@@ -40,11 +33,12 @@ class RenameUpload extends BaseFilter
      * @param string $sourceFile
      * @param string $targetFile
      * @return bool
-     * @throws FilterRuntimeException in the event of a warning
+     * @throws FilterRuntimeException In the event of a warning.
      */
     protected function moveUploadedFile($sourceFile, $targetFile)
     {
-        if (null === $this->request
+        if (
+            null === $this->request
             || ! method_exists($this->request, 'isPut')
             || (! $this->request->isPut() && ! $this->request->isPatch())
         ) {
@@ -52,7 +46,7 @@ class RenameUpload extends BaseFilter
         }
 
         ErrorHandler::start();
-        $result = rename($sourceFile, $targetFile);
+        $result           = rename($sourceFile, $targetFile);
         $warningException = ErrorHandler::stop();
 
         if (false === $result || null !== $warningException) {

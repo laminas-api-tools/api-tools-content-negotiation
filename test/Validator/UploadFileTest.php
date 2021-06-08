@@ -1,25 +1,27 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation\Validator;
 
 use Laminas\ApiTools\ContentNegotiation\Validator\UploadFile;
 use Laminas\Http\Request as HttpRequest;
 use PHPUnit\Framework\TestCase;
 
+use function basename;
+use function filesize;
+use function realpath;
+use function var_export;
+
+use const UPLOAD_ERR_OK;
+
 class UploadFileTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->validator = new UploadFile();
     }
 
-    public function uploadMethods()
+    /** @psalm-return array<string, array{0: string}> */
+    public function uploadMethods(): array
     {
         return [
             'put'   => ['PUT'],
@@ -30,7 +32,7 @@ class UploadFileTest extends TestCase
     /**
      * @dataProvider uploadMethods
      */
-    public function testDoesNotMarkUploadFileAsInvalidForPutAndPatchHttpRequests($method)
+    public function testDoesNotMarkUploadFileAsInvalidForPutAndPatchHttpRequests(string $method)
     {
         $request = new HttpRequest();
         $request->setMethod($method);

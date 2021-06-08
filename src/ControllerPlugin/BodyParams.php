@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\ControllerPlugin;
 
 use Laminas\ApiTools\ContentNegotiation\ParameterDataContainer;
@@ -17,9 +11,7 @@ class BodyParams extends AbstractPlugin
     /**
      * Grabs a param from body match after content-negotation
      *
-     * @param string $param
-     * @param mixed $default
-     * @return mixed
+     * @return array|ArrayAccess
      */
     public function __invoke()
     {

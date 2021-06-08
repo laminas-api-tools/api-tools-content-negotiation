@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
@@ -15,16 +9,16 @@ use Laminas\EventManager\EventManagerInterface;
 use Laminas\Http\Request as HttpRequest;
 use Laminas\Mvc\MvcEvent;
 
+use function array_key_exists;
+use function in_array;
+use function sprintf;
+
 class HttpMethodOverrideListener extends AbstractListenerAggregate
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $httpMethodOverride = [];
 
     /**
-     * HttpMethodOverrideListener constructor.
-     *
      * @param array $httpMethodOverride
      */
     public function __construct(array $httpMethodOverride)
@@ -36,7 +30,6 @@ class HttpMethodOverrideListener extends AbstractListenerAggregate
      * Priority is set very high (should be executed before all other listeners that rely on the request method value).
      * TODO: Check priority value, maybe value should be even higher??
      *
-     * @param EventManagerInterface $events
      * @param int                   $priority
      */
     public function attach(EventManagerInterface $events, $priority = 1)
@@ -47,7 +40,6 @@ class HttpMethodOverrideListener extends AbstractListenerAggregate
     /**
      * Checks for X-HTTP-Method-Override header and sets header inside request object.
      *
-     * @param  MvcEvent $event
      * @return void|ApiProblemResponse
      */
     public function onRoute(MvcEvent $event)
@@ -71,7 +63,7 @@ class HttpMethodOverrideListener extends AbstractListenerAggregate
             ));
         }
 
-        $header = $request->getHeader('X-HTTP-Method-Override');
+        $header         = $request->getHeader('X-HTTP-Method-Override');
         $overrideMethod = $header->getFieldValue();
         $allowedMethods = $this->httpMethodOverride[$method];
 

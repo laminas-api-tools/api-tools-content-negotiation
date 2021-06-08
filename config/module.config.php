@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
 use Laminas\ApiTools\ContentNegotiation\AcceptListener;
 use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
@@ -20,7 +14,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\Validator\File\UploadFile;
 
 return [
-    'filters' => [
+    'filters'                       => [
         'factories' => [
             // Overwrite RenameUpload filter's factory
             RenameUpload::class => Factory\RenameUploadFilterFactory::class,
@@ -29,9 +23,8 @@ return [
             'laminasfilterfilerenameupload' => Factory\RenameUploadFilterFactory::class,
         ],
     ],
-
-    'validators' => [
-        'factories'   => [
+    'validators'                    => [
+        'factories' => [
             // Overwrite UploadFile validator's factory
             UploadFile::class => Factory\UploadFileValidatorFactory::class,
 
@@ -39,32 +32,30 @@ return [
             'laminasvalidatorfileuploadfile' => Factory\UploadFileValidatorFactory::class,
         ],
     ],
-
-    'service_manager' => [
+    'service_manager'               => [
         'factories' => [
-            ContentTypeListener::class       => InvokableFactory::class,
-            'Request'                        => Factory\RequestFactory::class,
-            AcceptListener::class            => Factory\AcceptListenerFactory::class,
-            AcceptFilterListener::class      => Factory\AcceptFilterListenerFactory::class,
-            ContentTypeFilterListener::class => Factory\ContentTypeFilterListenerFactory::class,
-            ContentNegotiationOptions::class => Factory\ContentNegotiationOptionsFactory::class,
+            ContentTypeListener::class        => InvokableFactory::class,
+            'Request'                         => Factory\RequestFactory::class,
+            AcceptListener::class             => Factory\AcceptListenerFactory::class,
+            AcceptFilterListener::class       => Factory\AcceptFilterListenerFactory::class,
+            ContentTypeFilterListener::class  => Factory\ContentTypeFilterListenerFactory::class,
+            ContentNegotiationOptions::class  => Factory\ContentNegotiationOptionsFactory::class,
             HttpMethodOverrideListener::class => Factory\HttpMethodOverrideListenerFactory::class,
         ],
     ],
-
     'api-tools-content-negotiation' => [
         // This is an array of controller service names pointing to one of:
         // - a named selector (see below)
         // - an array of specific selectors, in the same format as for the
         //   selectors key
-        'controllers'            => [],
+        'controllers' => [],
 
         // This is an array of named selectors. Each selector consists of a
         // view model type pointing to the Accept mediatypes that will trigger
         // selection of that view model; see the documentation on the
         // AcceptableViewModelSelector plugin for details on the format:
         // http://docs.laminas.dev/laminas-mvc/plugins/#acceptableviewmodelselector-plugin
-        'selectors'              => [
+        'selectors' => [
             'Json' => [
                 JsonModel::class => [
                     'application/json',
@@ -75,7 +66,7 @@ return [
 
         // Array of controller service name => allowed accept header pairs.
         // The allowed content type may be a string, or an array of strings.
-        'accept_whitelist'       => [],
+        'accept_whitelist' => [],
 
         // Array of controller service name => allowed content type pairs.
         // The allowed content type may be a string, or an array of strings.
@@ -96,9 +87,8 @@ return [
             // 'GET' => ['HEAD', 'POST', 'PUT', 'DELETE', 'PATCH']
         ],
     ],
-
-    'controller_plugins' => [
-        'aliases' => [
+    'controller_plugins'            => [
+        'aliases'   => [
             'routeParam'  => ControllerPlugin\RouteParam::class,
             'queryParam'  => ControllerPlugin\QueryParam::class,
             'bodyParam'   => ControllerPlugin\BodyParam::class,

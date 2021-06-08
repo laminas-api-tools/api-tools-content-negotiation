@@ -1,16 +1,12 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation;
 
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener;
 use Laminas\Http\Request;
 use Laminas\Mvc\MvcEvent;
+use LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController;
 use PHPUnit\Framework\TestCase;
 
 class ContentTypeFilterListenerTest extends TestCase
@@ -19,9 +15,9 @@ class ContentTypeFilterListenerTest extends TestCase
 
     protected function setUp()
     {
-        $this->listener   = new ContentTypeFilterListener();
-        $this->event      = new MvcEvent();
-        $this->event->setTarget(new TestAsset\ContentTypeController());
+        $this->listener = new ContentTypeFilterListener();
+        $this->event    = new MvcEvent();
+        $this->event->setTarget(new ContentTypeController());
         $this->event->setRequest(new Request());
         $this->event->setRouteMatch($this->createRouteMatch([
             'controller' => __NAMESPACE__ . '\TestAsset\ContentTypeController',
@@ -37,7 +33,7 @@ class ContentTypeFilterListenerTest extends TestCase
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([
-            'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => [
+            ContentTypeController::class => [
                 $contentType,
             ],
         ]);
@@ -49,7 +45,7 @@ class ContentTypeFilterListenerTest extends TestCase
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([
-            'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => [
+            ContentTypeController::class => [
                 'application/xml',
             ],
         ]);
@@ -58,10 +54,9 @@ class ContentTypeFilterListenerTest extends TestCase
         $request->setContent('<?xml version="1.0"?><foo><bar>baz</bar></foo>');
 
         $response = $this->listener->onRoute($this->event);
-        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $response);
+        $this->assertInstanceOf(ApiProblemResponse::class, $response);
         $this->assertContains('Invalid content-type', $response->getApiProblem()->detail);
     }
-
 
     /**
      * @group 66
@@ -70,7 +65,7 @@ class ContentTypeFilterListenerTest extends TestCase
     {
         $contentType = 'application/vnd.laminas.v1.foo+json';
         $this->listener->setConfig([
-            'LaminasTest\ApiTools\ContentNegotiation\TestAsset\ContentTypeController' => [
+            ContentTypeController::class => [
                 $contentType,
             ],
         ]);

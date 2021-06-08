@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
@@ -15,38 +9,37 @@ use Laminas\Mvc\InjectApplicationEventInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Model\ModelInterface as ViewModelInterface;
 
+use function is_array;
+use function is_string;
+use function method_exists;
+
 class AcceptListener
 {
-    /**
-     * @var AcceptableViewModelSelector
-     */
+    /** @var AcceptableViewModelSelector */
     protected $selector;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $controllerConfig = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $selectorsConfig = [];
 
     /**
-     * @param AcceptableViewModelSelector $selector
      * @param array $config
      */
     public function __construct(AcceptableViewModelSelector $selector, array $config)
     {
         $this->selector = $selector;
 
-        if (isset($config['controllers'])
+        if (
+            isset($config['controllers'])
             && is_array($config['controllers'])
         ) {
             $this->controllerConfig = $config['controllers'];
         }
 
-        if (isset($config['selectors'])
+        if (
+            isset($config['selectors'])
             && is_array($config['selectors'])
         ) {
             $this->selectorsConfig = $config['selectors'];
@@ -54,7 +47,6 @@ class AcceptListener
     }
 
     /**
-     * @param  MvcEvent $e
      * @return null|ApiProblemResponse
      */
     public function __invoke(MvcEvent $e)
@@ -66,7 +58,7 @@ class AcceptListener
         }
 
         $result = $e->getResult();
-        if (! is_array($result) && (! $result instanceof ViewModel)) {
+        if (! is_array($result) && ! $result instanceof ViewModel) {
             // We will only attempt to re-cast ContentNegotiation\ViewModel
             // results or arrays to what the AcceptableViewModelSelector gives
             // us. Anything else, we cannot handle.
@@ -80,7 +72,7 @@ class AcceptListener
             // anything more.
             return;
         }
-        $selector  = $this->selector;
+        $selector = $this->selector;
         $selector->setController($controller);
 
         $criteria = $e->getParam('LaminasContentNegotiation');
@@ -153,8 +145,6 @@ class AcceptListener
      * If the result is an array, we pass those values as the view model variables.
      *
      * @param  array|ViewModel $result
-     * @param  ViewModelInterface $viewModel
-     * @param  MvcEvent $e
      */
     protected function populateViewModel($result, ViewModelInterface $viewModel, MvcEvent $e)
     {

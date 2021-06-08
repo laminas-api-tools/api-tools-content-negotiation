@@ -1,16 +1,14 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ContentNegotiation\Request;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
+
+use function method_exists;
+use function realpath;
+use function stream_get_contents;
 
 class RequestTest extends TestCase
 {
@@ -21,12 +19,12 @@ class RequestTest extends TestCase
 
     public function testIsAnHttpRequest()
     {
-        $this->assertInstanceOf('Laminas\Http\Request', $this->request);
+        $this->assertInstanceOf(\Laminas\Http\Request::class, $this->request);
     }
 
     public function testIsAPhpEnvironmentHttpRequest()
     {
-        $this->assertInstanceOf('Laminas\Http\PhpEnvironment\Request', $this->request);
+        $this->assertInstanceOf(\Laminas\Http\PhpEnvironment\Request::class, $this->request);
     }
 
     public function testDefinesAGetContentAsStreamMethod()

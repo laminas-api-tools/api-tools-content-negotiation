@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
 use Interop\Container\ContainerInterface;
@@ -24,12 +18,11 @@ class RenameUploadFilterFactory implements FactoryInterface
     private $options;
 
     /**
-     * @param  ContainerInterface $container
      * @param string $requestedName,
      * @param null|array $options
      * @return RenameUpload
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $filter = new RenameUpload($options);
 
@@ -43,7 +36,6 @@ class RenameUploadFilterFactory implements FactoryInterface
     /**
      * Create and return a RenameUpload filter (v2 compatibility)
      *
-     * @param ServiceLocatorInterface $container
      * @param null|string $name
      * @param null|string $requestedName
      * @return RenameUpload
