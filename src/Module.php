@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
@@ -36,13 +30,12 @@ class Module
      * Attaches the AcceptListener as a shared listener for controller dispatch
      * events.
      *
-     * @param MvcEvent $e
      * @return void
      */
     public function onBootstrap(MvcEvent $e)
     {
-        $app = $e->getApplication();
-        $services = $app->getServiceManager();
+        $app          = $e->getApplication();
+        $services     = $app->getServiceManager();
         $eventManager = $app->getEventManager();
 
         $eventManager->attach(MvcEvent::EVENT_ROUTE, $services->get(ContentTypeListener::class), -625);

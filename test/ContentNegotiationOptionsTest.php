@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
@@ -13,7 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class ContentNegotiationOptionsTest extends TestCase
 {
-    public function dashSeparatedOptions()
+    /** @psalm-return array<string, array{0: string, 1: string}> */
+    public function dashSeparatedOptions(): array
     {
         return [
             'accept-whitelist'               => ['accept-whitelist', 'accept_whitelist'],
@@ -26,9 +21,9 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testSetNormalizesDashSeparatedKeysToUnderscoreSeparated($key, $normalized)
+    public function testSetNormalizesDashSeparatedKeysToUnderscoreSeparated(string $key, string $normalized)
     {
-        $options = new ContentNegotiationOptions();
+        $options         = new ContentNegotiationOptions();
         $options->{$key} = ['value'];
         $this->assertEquals(['value'], $options->{$key});
         $this->assertEquals(['value'], $options->{$normalized});
@@ -37,7 +32,7 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testConstructorAllowsDashSeparatedKeys($key, $normalized)
+    public function testConstructorAllowsDashSeparatedKeys(string $key, string $normalized)
     {
         $options = new ContentNegotiationOptions([$key => ['value']]);
         $this->assertEquals(['value'], $options->{$key});
@@ -47,13 +42,11 @@ class ContentNegotiationOptionsTest extends TestCase
     /**
      * @dataProvider dashSeparatedOptions
      */
-    public function testDashAndUnderscoreSeparatedValuesGetMerged(
-        $key,
-        $normalized
-    ) {
-        $keyValue = 'valueKey';
+    public function testDashAndUnderscoreSeparatedValuesGetMerged(string $key, string $normalized)
+    {
+        $keyValue        = 'valueKey';
         $normalizedValue = 'valueNormalized';
-        $expectedResult = [
+        $expectedResult  = [
             $keyValue,
             $normalizedValue,
         ];
@@ -61,7 +54,7 @@ class ContentNegotiationOptionsTest extends TestCase
         $options = new ContentNegotiationOptions();
         $options->setFromArray(
             [
-                $key => [
+                $key        => [
                     $keyValue,
                 ],
                 $normalized => [

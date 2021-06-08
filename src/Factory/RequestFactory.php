@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
 use Interop\Container\ContainerInterface;
@@ -13,10 +7,13 @@ use Laminas\ApiTools\ContentNegotiation\Request as HttpRequest;
 use Laminas\Console\Console;
 use Laminas\Console\Request as ConsoleRequest;
 
+use function class_exists;
+
+use const PHP_SAPI;
+
 class RequestFactory
 {
     /**
-     * @param  ContainerInterface $container
      * @return ConsoleRequest|HttpRequest
      */
     public function __invoke(ContainerInterface $container)

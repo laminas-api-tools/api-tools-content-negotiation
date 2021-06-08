@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation\Factory;
 
 use Interop\Container\ContainerInterface;
@@ -13,6 +7,8 @@ use Laminas\ApiTools\ContentNegotiation\Validator\UploadFile;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\FactoryInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+
+use function method_exists;
 
 class UploadFileValidatorFactory implements FactoryInterface
 {
@@ -24,14 +20,14 @@ class UploadFileValidatorFactory implements FactoryInterface
     private $options;
 
     /**
-     * @param ContainerInterface $container
      * @param string $requestedName,
      * @param null|array $options
      * @return UploadFile
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        if ($container instanceof AbstractPluginManager
+        if (
+            $container instanceof AbstractPluginManager
             && ! method_exists($container, 'configure')
         ) {
             $container = $container->getServiceLocator() ?: $container;
@@ -47,7 +43,6 @@ class UploadFileValidatorFactory implements FactoryInterface
     /**
      * Create and return an UploadFile validator (v2 compatibility)
      *
-     * @param ServiceLocatorInterface $container
      * @param null|string $name
      * @param null|string $requestedName
      * @return UploadFile

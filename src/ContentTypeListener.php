@@ -1,22 +1,38 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\Mvc\MvcEvent;
 
+use function array_key_exists;
+use function basename;
+use function dirname;
+use function file_exists;
+use function in_array;
+use function is_array;
+use function is_object;
+use function json_decode;
+use function json_last_error;
+use function method_exists;
+use function parse_str;
+use function preg_match;
+use function sprintf;
+use function strlen;
+use function trim;
+use function unlink;
+
+use const JSON_ERROR_CTRL_CHAR;
+use const JSON_ERROR_DEPTH;
+use const JSON_ERROR_NONE;
+use const JSON_ERROR_STATE_MISMATCH;
+use const JSON_ERROR_SYNTAX;
+use const JSON_ERROR_UTF8;
+
 class ContentTypeListener
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $jsonErrors = [
         JSON_ERROR_DEPTH          => 'Maximum stack depth exceeded',
         JSON_ERROR_STATE_MISMATCH => 'Underflow or the modes mismatch',
@@ -42,12 +58,11 @@ class ContentTypeListener
      * If an error occurs during deserialization, an ApiProblemResponse is
      * returned, indicating an issue with the submission.
      *
-     * @param  MvcEvent $e
      * @return null|ApiProblemResponse
      */
     public function __invoke(MvcEvent $e)
     {
-        $request       = $e->getRequest();
+        $request = $e->getRequest();
         if (! method_exists($request, 'getHeaders')) {
             // Not an HTTP request; nothing to do
             return;
@@ -82,7 +97,7 @@ class ContentTypeListener
 
                 if ($contentType && $contentType->match('multipart/form-data')) {
                     try {
-                        $parser = new MultipartContentParser($contentType, $request);
+                        $parser     = new MultipartContentParser($contentType, $request);
                         $bodyParams = $parser->parse();
                     } catch (Exception\ExceptionInterface $e) {
                         $bodyParams = new ApiProblemResponse(new ApiProblem(
@@ -126,8 +141,6 @@ class ContentTypeListener
 
     /**
      * Remove upload files if still present in filesystem
-     *
-     * @param MvcEvent $e
      */
     public function onFinish(MvcEvent $e)
     {
@@ -171,7 +184,7 @@ class ContentTypeListener
             return [];
         }
 
-        $data = json_decode($json, true);
+        $data    = json_decode($json, true);
         $isArray = is_array($data);
 
         // Decode 'application/hal+json' to 'application/json' by merging _embedded into the array
@@ -201,7 +214,6 @@ class ContentTypeListener
     /**
      * Attach the file cleanup listener
      *
-     * @param MvcEvent $event
      * @param string $uploadTmpDir Directory in which file uploads were made
      */
     protected function attachFileCleanupListener(MvcEvent $event, $uploadTmpDir)
@@ -212,7 +224,7 @@ class ContentTypeListener
         }
 
         $this->uploadTmpDir = $uploadTmpDir;
-        $events = $target->getEventManager();
+        $events             = $target->getEventManager();
         $events->attach('finish', [$this, 'onFinish'], 1000);
     }
 }

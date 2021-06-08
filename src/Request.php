@@ -1,14 +1,14 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\Http\PhpEnvironment\Request as BaseRequest;
+
+use function fopen;
+use function fwrite;
+use function is_resource;
+use function is_string;
+use function rewind;
 
 /**
  * Custom request object
@@ -61,7 +61,8 @@ class Request extends BaseRequest
      */
     public function setContentStream($stream)
     {
-        if (! is_string($stream)
+        if (
+            ! is_string($stream)
             && ! is_resource($stream)
         ) {
             throw new Exception\InvalidContentStreamException();

@@ -1,16 +1,34 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\Http\Header\ContentType as ContentTypeHeader;
 use Laminas\Http\Request as HttpRequest;
 use Laminas\Stdlib\Parameters;
+
+use function fclose;
+use function fgets;
+use function filesize;
+use function finfo_file;
+use function finfo_open;
+use function fopen;
+use function function_exists;
+use function fwrite;
+use function ini_get;
+use function is_dir;
+use function preg_match;
+use function rawurlencode;
+use function rewind;
+use function rtrim;
+use function sprintf;
+use function strtoupper;
+use function sys_get_temp_dir;
+use function tempnam;
+
+use const FILEINFO_MIME_TYPE;
+use const UPLOAD_ERR_CANT_WRITE;
+use const UPLOAD_ERR_NO_TMP_DIR;
+use const UPLOAD_ERR_OK;
 
 class MultipartContentParser
 {
@@ -21,15 +39,11 @@ class MultipartContentParser
      */
     protected $boundary;
 
-    /**
-     * @var HttpRequest
-     */
+    /** @var HttpRequest */
     protected $request;
 
     /**
-     * @param  ContentTypeHeader $contentType
-     * @param  HttpRequest $request
-     * @throws Exception\InvalidMultipartContentException if unable to detect MIME boundary
+     * @throws Exception\InvalidMultipartContentException If unable to detect MIME boundary.
      */
     public function __construct(ContentTypeHeader $contentType, HttpRequest $request)
     {
@@ -177,7 +191,6 @@ class MultipartContentParser
                     $tmpFile  = false;
                     $lastline = null;
 
-
                     // Parse headers
                     $name = $this->getNameFromHeaders($headers);
 
@@ -194,7 +207,7 @@ class MultipartContentParser
                 }
 
                 if (preg_match('/^(?P<header>[a-z]+[a-z0-9_-]+):\s*(?P<value>.*)$/i', $trimmedLine, $matches)) {
-                    $header = strtoupper($matches['header']);
+                    $header           = strtoupper($matches['header']);
                     $headers[$header] = $matches['value'];
 
                     continue;
@@ -238,7 +251,7 @@ class MultipartContentParser
                 }
 
                 $file['tmp_name'] = tempnam($tmpDir, 'laminasc');
-                $tmpFile = fopen($file['tmp_name'], 'wb');
+                $tmpFile          = fopen($file['tmp_name'], 'wb');
                 if (false === $tmpFile) {
                     // Cannot open the temporary file for writing; this is an error
                     $file['error'] = UPLOAD_ERR_CANT_WRITE;

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
@@ -13,12 +7,15 @@ use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\Http\Headers as HttpHeaders;
 use Laminas\Mvc\MvcEvent;
 
+use function is_array;
+use function is_string;
+use function method_exists;
+
 class AcceptFilterListener extends ContentTypeFilterListener
 {
     /**
      * Test if the accept content-type received is allowable.
      *
-     * @param  MvcEvent $e
      * @return null|ApiProblemResponse
      */
     public function onRoute(MvcEvent $e)
@@ -63,7 +60,6 @@ class AcceptFilterListener extends ContentTypeFilterListener
      * Validate the passed mediatype against the appropriate header
      *
      * @param  string $match
-     * @param  HttpHeaders $headers
      * @return bool
      */
     protected function validateMediaType($match, HttpHeaders $headers)

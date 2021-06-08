@@ -1,50 +1,34 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\Stdlib\AbstractOptions;
+use Laminas\Stdlib\Exception\BadMethodCallException;
+
+use function array_merge_recursive;
+use function str_replace;
 
 class ContentNegotiationOptions extends AbstractOptions
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $controllers = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $selectors = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $acceptWhitelist = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $contentTypeWhitelist = [];
 
-    /**
-     * @var boolean
-     */
+    /** @var boolean */
     protected $xHttpMethodOverrideEnabled = false;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $httpOverrideMethods = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $keysToNormalize = [
         'accept-whitelist',
         'content-type-whitelist',
@@ -56,6 +40,7 @@ class ContentNegotiationOptions extends AbstractOptions
      * {@inheritDoc}
      *
      * Normalizes and merges the configuration for specific configuration keys
+     *
      * @see self::normalizeOptions
      */
     public function setFromArray($options)
@@ -108,6 +93,7 @@ class ContentNegotiationOptions extends AbstractOptions
     /**
      * @deprecated since 1.4.0; hhould be removed in next major version, and only one
      *     configuration key style should be supported.
+     *
      * @param string $key
      * @return string
      */
@@ -124,9 +110,10 @@ class ContentNegotiationOptions extends AbstractOptions
      * were previously ignored!).
      *
      * @see \Laminas\Stdlib\ParameterObject::__set()
+     *
      * @param string $key
      * @param mixed $value
-     * @throws \Laminas\Stdlib\Exception\BadMethodCallException
+     * @throws BadMethodCallException
      * @return void
      */
     public function __set($key, $value)
@@ -142,8 +129,9 @@ class ContentNegotiationOptions extends AbstractOptions
      * were previously ignored!).
      *
      * @see \Laminas\Stdlib\ParameterObject::__get()
+     *
      * @param string $key
-     * @throws \Laminas\Stdlib\Exception\BadMethodCallException
+     * @throws BadMethodCallException
      * @return mixed
      */
     public function __get($key)

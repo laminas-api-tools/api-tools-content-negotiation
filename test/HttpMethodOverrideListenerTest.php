@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
@@ -14,56 +8,51 @@ use Laminas\Http\Request as HttpRequest;
 use Laminas\Mvc\MvcEvent;
 use PHPUnit\Framework\TestCase;
 
+use function sprintf;
+
 class HttpMethodOverrideListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
-    /**
-     * @var HttpMethodOverrideListener
-     */
+    /** @var HttpMethodOverrideListener */
     protected $listener;
 
-    /**
-     * @var array
-     */
+    /** @var array<HttpRequest::METHOD_*, array<array-key, HttpRequest::METHOD_*>> */
     protected $httpMethodOverride = [
-        HttpRequest::METHOD_GET => [
+        HttpRequest::METHOD_GET  => [
             HttpRequest::METHOD_HEAD,
             HttpRequest::METHOD_POST,
             HttpRequest::METHOD_PUT,
             HttpRequest::METHOD_DELETE,
             HttpRequest::METHOD_PATCH,
         ],
-        HttpRequest::METHOD_POST => [
-        ],
+        HttpRequest::METHOD_POST => [],
     ];
 
     /**
      * Set up test
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->listener = new HttpMethodOverrideListener($this->httpMethodOverride);
     }
 
-    /**
-     * @return array
-     */
-    public function httpMethods()
+    /** @psalm-return array<string, array{0: HttpRequest::METHOD_*}> */
+    public function httpMethods(): array
     {
         return [
-            'head' => [HttpRequest::METHOD_HEAD],
-            'post' => [HttpRequest::METHOD_POST],
-            'put' => [HttpRequest::METHOD_PUT],
+            'head'   => [HttpRequest::METHOD_HEAD],
+            'post'   => [HttpRequest::METHOD_POST],
+            'put'    => [HttpRequest::METHOD_PUT],
             'delete' => [HttpRequest::METHOD_DELETE],
-            'patch' => [HttpRequest::METHOD_PATCH],
+            'patch'  => [HttpRequest::METHOD_PATCH],
         ];
     }
 
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListener($method)
+    public function testHttpMethodOverrideListener(string $method)
     {
         $listener = $this->listener;
 
@@ -82,7 +71,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig($method)
+    public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig(string $method)
     {
         $listener = $this->listener;
 
@@ -106,7 +95,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue($method)
+    public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue(string $method)
     {
         $listener = $this->listener;
 

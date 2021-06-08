@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-content-negotiation for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-content-negotiation/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\ContentNegotiation\Factory;
 
 use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;
+use Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener;
 use Laminas\ApiTools\ContentNegotiation\Factory\ContentTypeFilterListenerFactory;
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +14,7 @@ class ContentTypeFilterListenerFactoryTest extends TestCase
     {
         $serviceManager = new ServiceManager();
         $serviceManager->setService(
-            'Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions',
+            ContentNegotiationOptions::class,
             new ContentNegotiationOptions()
         );
 
@@ -27,6 +22,6 @@ class ContentTypeFilterListenerFactoryTest extends TestCase
 
         $service = $factory($serviceManager, 'ContentTypeFilterListener');
 
-        $this->assertInstanceOf('Laminas\ApiTools\ContentNegotiation\ContentTypeFilterListener', $service);
+        $this->assertInstanceOf(ContentTypeFilterListener::class, $service);
     }
 }
