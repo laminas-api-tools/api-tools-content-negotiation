@@ -74,7 +74,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertInstanceOf(ApiProblemResponse::class, $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
-        $this->assertContains('JSON decoding', $problem->detail);
+        $this->assertStringContainsString('JSON decoding', $problem->detail);
     }
 
     /**
@@ -98,7 +98,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertInstanceOf(ApiProblemResponse::class, $result);
         $problem = $result->getApiProblem();
         $this->assertEquals(400, $problem->status);
-        $this->assertContains('JSON decoding', $problem->detail);
+        $this->assertStringContainsString('JSON decoding', $problem->detail);
     }
 
     /** @psalm-param array<string, array{0: string}> */
@@ -140,14 +140,14 @@ class ContentTypeListenerTest extends TestCase
         $files = $request->getFiles();
         $this->assertEquals(1, $files->count());
         $file = $files->get('text');
-        $this->assertInternalType('array', $file);
+        $this->assertIsArray($file);
         $this->assertArrayHasKey('error', $file);
         $this->assertArrayHasKey('name', $file);
         $this->assertArrayHasKey('tmp_name', $file);
         $this->assertArrayHasKey('size', $file);
         $this->assertArrayHasKey('type', $file);
         $this->assertEquals('README.md', $file['name']);
-        $this->assertRegexp('/^laminasc/', basename($file['tmp_name']));
+        $this->assertMatchesRegularExpression('/^laminasc/', basename($file['tmp_name']));
         $this->assertTrue(file_exists($file['tmp_name']));
     }
 
@@ -180,14 +180,14 @@ class ContentTypeListenerTest extends TestCase
         $files = $request->getFiles();
         $this->assertEquals(1, $files->count());
         $file = $files->get('text');
-        $this->assertInternalType('array', $file);
+        $this->assertIsArray($file);
         $this->assertArrayHasKey('error', $file);
         $this->assertArrayHasKey('name', $file);
         $this->assertArrayHasKey('tmp_name', $file);
         $this->assertArrayHasKey('size', $file);
         $this->assertArrayHasKey('type', $file);
         $this->assertEquals('README.md', $file['name']);
-        $this->assertRegexp('/^laminasc/', basename($file['tmp_name']));
+        $this->assertMatchesRegularExpression('/^laminasc/', basename($file['tmp_name']));
         $this->assertTrue(file_exists($file['tmp_name']));
     }
 
@@ -252,7 +252,7 @@ class ContentTypeListenerTest extends TestCase
         }
 
         $this->listener->onFinish($event);
-        $this->assertFileNotExists($tmpFile);
+        $this->assertFileDoesNotExist($tmpFile);
     }
 
     public function testOnFinishDoesNotRemoveUploadFilesTheListenerDidNotCreate()
@@ -350,6 +350,7 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $content
      * @group 36
      * @dataProvider methodsWithBlankBodies
      */
@@ -394,6 +395,7 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $content
      * @group 36
      * @dataProvider methodsWithLeadingWhitespace
      */
@@ -436,6 +438,7 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $content
      * @group 36
      * @dataProvider methodsWithTrailingWhitespace
      */
@@ -478,6 +481,7 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $content
      * @group 36
      * @dataProvider methodsWithLeadingAndTrailingWhitespace
      */
@@ -512,6 +516,7 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $content
      * @dataProvider methodsWithWhitespaceInsideBody
      */
     public function testWillNotRemoveWhitespaceInsideBody(string $method, string $content)
@@ -556,7 +561,7 @@ class ContentTypeListenerTest extends TestCase
         $this->assertInstanceOf(ApiProblemResponse::class, $result);
         $this->assertEquals(400, $result->getStatusCode());
         $details = $result->getApiProblem()->toArray();
-        $this->assertContains('does not contain a "name" field', $details['detail']);
+        $this->assertStringContainsString('does not contain a "name" field', $details['detail']);
     }
 
     public function testReturnsArrayWhenFieldNamesHaveArraySyntax()

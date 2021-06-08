@@ -8,6 +8,6 @@ class BodyContent
 {
     public function __toString(): string
     {
-        return json_encode(['foo' => 'bar']);
+        return (string) json_encode(['foo' => 'bar']);
     }
 }

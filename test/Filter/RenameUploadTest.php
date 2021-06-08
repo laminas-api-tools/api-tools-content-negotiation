@@ -105,7 +105,7 @@ class RenameUploadTest extends TestCase
         $filter->setRequest($request);
 
         $result = $filter->filter($file);
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertArrayHasKey('tmp_name', $result);
         $this->assertEquals($target, $result['tmp_name']);
 

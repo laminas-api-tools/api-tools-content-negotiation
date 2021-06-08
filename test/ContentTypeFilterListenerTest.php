@@ -13,7 +13,7 @@ class ContentTypeFilterListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->listener = new ContentTypeFilterListener();
         $this->event    = new MvcEvent();
@@ -55,7 +55,7 @@ class ContentTypeFilterListenerTest extends TestCase
 
         $response = $this->listener->onRoute($this->event);
         $this->assertInstanceOf(ApiProblemResponse::class, $response);
-        $this->assertContains('Invalid content-type', $response->getApiProblem()->detail);
+        $this->assertStringContainsString('Invalid content-type', $response->getApiProblem()->detail);
     }
 
     /**
