@@ -54,7 +54,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @group 3
      * @dataProvider methodsWithBodies
      */
@@ -79,7 +78,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @group 3
      * @dataProvider methodsWithBodies
      */
@@ -114,7 +112,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider multipartFormDataMethods
      */
     public function testCanDecodeMultipartFormDataRequestsForPutPatchAndDeleteOperations(string $method)
@@ -155,7 +152,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider multipartFormDataMethods
      */
     public function testCanDecodeMultipartFormDataRequestsFromStreamsForPutAndPatchOperations(string $method)
@@ -312,7 +308,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @group 35
      * @dataProvider methodsWithBodies
      */
@@ -355,7 +350,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @param mixed $content
      * @group 36
      * @dataProvider methodsWithBlankBodies
@@ -401,7 +395,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @param mixed $content
      * @group 36
      * @dataProvider methodsWithLeadingWhitespace
@@ -445,7 +438,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @param mixed $content
      * @group 36
      * @dataProvider methodsWithTrailingWhitespace
@@ -489,7 +481,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @param mixed $content
      * @group 36
      * @dataProvider methodsWithLeadingAndTrailingWhitespace
@@ -525,7 +516,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @param mixed $content
      * @dataProvider methodsWithWhitespaceInsideBody
      */
@@ -605,7 +595,6 @@ class ContentTypeListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @group 50
      * @dataProvider methodsWithBodies
      */

@@ -19,8 +19,6 @@ class ContentNegotiationOptionsTest extends TestCase
     }
 
     /**
-     * @param string $key
-     * @param string $normalized
      * @dataProvider dashSeparatedOptions
      */
     public function testSetNormalizesDashSeparatedKeysToUnderscoreSeparated(string $key, string $normalized)
@@ -32,8 +30,6 @@ class ContentNegotiationOptionsTest extends TestCase
     }
 
     /**
-     * @param string $key
-     * @param string $normalized
      * @dataProvider dashSeparatedOptions
      */
     public function testConstructorAllowsDashSeparatedKeys(string $key, string $normalized)

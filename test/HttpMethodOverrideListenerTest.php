@@ -50,7 +50,6 @@ class HttpMethodOverrideListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListener(string $method)
@@ -70,7 +69,6 @@ class HttpMethodOverrideListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig(string $method)
@@ -95,7 +93,6 @@ class HttpMethodOverrideListenerTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider httpMethods
      */
     public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue(string $method)

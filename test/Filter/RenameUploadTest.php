@@ -92,7 +92,6 @@ class RenameUploadTest extends TestCase
     }
 
     /**
-     * @param string $method
      * @dataProvider uploadMethods
      */
     public function testMoveUploadedFileSucceedsOnPutAndPatchHttpRequests(string $method)
