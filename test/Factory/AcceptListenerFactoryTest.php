@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class AcceptListenerFactoryTest extends TestCase
 {
-    public function testCreateServiceShouldReturnAcceptListenerInstance()
+    public function testCreateServiceShouldReturnAcceptListenerInstance(): void
     {
         $serviceManager = new ServiceManager();
         $serviceManager->setService(

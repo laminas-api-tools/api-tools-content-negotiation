@@ -49,7 +49,7 @@ class AcceptListenerTest extends TestCase
         $this->controller->setPluginManager($plugins);
     }
 
-    public function testInabilityToResolveViewModelReturnsApiProblemResponse()
+    public function testInabilityToResolveViewModelReturnsApiProblemResponse(): void
     {
         $listener = $this->listener;
         $this->event->setResult(['foo' => 'bar']);
@@ -60,7 +60,7 @@ class AcceptListenerTest extends TestCase
         $this->assertStringContainsString('Unable to resolve', $response->getApiProblem()->detail);
     }
 
-    public function testReturnADefaultViewModelIfNoCriteriaSpecifiedForAController()
+    public function testReturnADefaultViewModelIfNoCriteriaSpecifiedForAController(): void
     {
         $selector = $this->controller->plugin('AcceptableViewModelSelector');
         $listener = new AcceptListener($selector, []);
@@ -74,7 +74,7 @@ class AcceptListenerTest extends TestCase
     /**
      * @group 22
      */
-    public function testShouldExitEarlyIfNonHttpRequestPresentInEvent()
+    public function testShouldExitEarlyIfNonHttpRequestPresentInEvent(): void
     {
         $request = $this->getMockBuilder(RequestInterface::class)->getMock();
         $this->event->setRequest($request);

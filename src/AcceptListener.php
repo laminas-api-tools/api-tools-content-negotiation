@@ -144,7 +144,8 @@ class AcceptListener
      *
      * If the result is an array, we pass those values as the view model variables.
      *
-     * @param  array|ViewModel $result
+     * @param array|ViewModel $result
+     * @return void
      */
     protected function populateViewModel($result, ViewModelInterface $viewModel, MvcEvent $e)
     {

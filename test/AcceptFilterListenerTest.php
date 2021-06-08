@@ -20,7 +20,7 @@ class AcceptFilterListenerTest extends TestCase
     /**
      * @group 58
      */
-    public function testMissingAcceptHeaderIndicatesValidMediaType()
+    public function testMissingAcceptHeaderIndicatesValidMediaType(): void
     {
         $headers = $this->prophesize(Headers::class);
         $headers->has('accept')->willReturn(false);

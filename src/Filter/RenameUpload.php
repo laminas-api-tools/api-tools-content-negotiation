@@ -16,6 +16,7 @@ class RenameUpload extends BaseFilter
     /** @var RequestInterface */
     protected $request;
 
+    /** @return void */
     public function setRequest(RequestInterface $request)
     {
         $this->request = $request;

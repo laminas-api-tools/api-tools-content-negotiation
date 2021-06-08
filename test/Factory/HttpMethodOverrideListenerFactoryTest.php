@@ -14,7 +14,7 @@ class HttpMethodOverrideListenerFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
-    public function testCreateServiceShouldReturnContentTypeFilterListenerInstance()
+    public function testCreateServiceShouldReturnContentTypeFilterListenerInstance(): void
     {
         /** @var ContentNegotiationOptions|ObjectProphecy $options */
         $options = $this->prophesize(ContentNegotiationOptions::class);

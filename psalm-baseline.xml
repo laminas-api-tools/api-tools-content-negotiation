@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.3@38c452ae584467e939d55377aaf83b5a26f19dd1">
+  <file src="src/AcceptFilterListener.php">
+    <MixedArgument occurrences="3">
+      <code>$headers</code>
+      <code>$headers</code>
+      <code>$whitelistType</code>
+    </MixedArgument>
+    <MixedArrayOffset occurrences="1">
+      <code>$this-&gt;config[$controllerName]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="3">
+      <code>$controllerName</code>
+      <code>$headers</code>
+      <code>$whitelistType</code>
+    </MixedAssignment>
+    <PossiblyInvalidMethodCall occurrences="1">
+      <code>match</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyNullReference occurrences="1">
+      <code>getParam</code>
+    </PossiblyNullReference>
+    <UndefinedMethod occurrences="1">
+      <code>match</code>
+    </UndefinedMethod>
+  </file>
+  <file src="src/AcceptListener.php">
+    <InvalidArgument occurrences="1">
+      <code>$controller</code>
+    </InvalidArgument>
+    <MixedArgument occurrences="5">
+      <code>$child</code>
+      <code>$controllerName</code>
+      <code>$criteria</code>
+      <code>$criteria</code>
+      <code>$fallbackConfig</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="6">
+      <code>$child</code>
+      <code>$controllerName</code>
+      <code>$criteria</code>
+      <code>$criteria</code>
+      <code>$criteria</code>
+      <code>$fallbackConfig</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array|null</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$criteria</code>
+    </MixedReturnStatement>
+    <ParadoxicalCondition occurrences="1">
+      <code>! $criteria || empty($criteria)</code>
+    </ParadoxicalCondition>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$result-&gt;getVariables()</code>
+    </PossiblyInvalidArgument>
+    <PossiblyNullArgument occurrences="3">
+      <code>$fallbackConfig</code>
+      <code>$fallbackConfig</code>
+      <code>$fallbackConfig</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="1">
+      <code>getParam</code>
+    </PossiblyNullReference>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>is_string($criteria)</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/ContentNegotiationOptions.php">
+    <DeprecatedMethod occurrences="3">
+      <code>normalizeKey</code>
+      <code>normalizeKey</code>
+      <code>normalizeKey</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="3">
+      <code>$config[$key]</code>
+      <code>$config[$normalizedKey]</code>
+      <code>$key</code>
+    </MixedArgument>
+    <MixedArrayOffset occurrences="4">
+      <code>$config[$key]</code>
+      <code>$config[$key]</code>
+      <code>$mergedConfig[$key]</code>
+      <code>$mergedConfig[$key]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="3">
+      <code>$key</code>
+      <code>$mergedConfig[$normalizedKey]</code>
+      <code>$mergedConfig[$normalizedKey]</code>
+    </MixedAssignment>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$options</code>
+    </PossiblyInvalidArgument>
+  </file>
+  <file src="src/ContentTypeFilterListener.php">
+    <MixedArrayOffset occurrences="1">
+      <code>$this-&gt;config[$controllerName]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="4">
+      <code>$contentTypeHeader</code>
+      <code>$controllerName</code>
+      <code>$headers</code>
+      <code>$matched</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="3">
+      <code>get</code>
+      <code>has</code>
+      <code>match</code>
+    </MixedMethodCall>
+    <PossiblyNullReference occurrences="1">
+      <code>getParam</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/ContentTypeListener.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$request</code>
+    </ArgumentTypeCoercion>
+    <InvalidCatch occurrences="1"/>
+    <MissingConstructor occurrences="1">
+      <code>$uploadTmpDir</code>
+    </MissingConstructor>
+    <MixedArgument occurrences="13">
+      <code>$bodyParams</code>
+      <code>$content</code>
+      <code>$content</code>
+      <code>$content</code>
+      <code>$content</code>
+      <code>$contentType</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$message</code>
+      <code>$request-&gt;getContent()</code>
+      <code>$request-&gt;getQuery()-&gt;toArray()</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="7">
+      <code>$content[0]</code>
+      <code>$data['_embedded']</code>
+      <code>$data['_embedded']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+      <code>$fileInfo['tmp_name']</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="1">
+      <code>$data[$key]</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="1">
+      <code>$data[$key]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="13">
+      <code>$bodyParams</code>
+      <code>$bodyParams</code>
+      <code>$bodyParams</code>
+      <code>$bodyParams</code>
+      <code>$content</code>
+      <code>$contentType</code>
+      <code>$data</code>
+      <code>$data[$key]</code>
+      <code>$events</code>
+      <code>$fileInfo</code>
+      <code>$key</code>
+      <code>$message</code>
+      <code>$value</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="7">
+      <code>attach</code>
+      <code>count</code>
+      <code>match</code>
+      <code>match</code>
+      <code>match</code>
+      <code>toArray</code>
+      <code>toArray</code>
+    </MixedMethodCall>
+    <PossiblyNullReference occurrences="1">
+      <code>getParams</code>
+    </PossiblyNullReference>
+    <PossiblyUndefinedMethod occurrences="6">
+      <code>getFiles</code>
+      <code>getHeader</code>
+      <code>getMethod</code>
+      <code>getPost</code>
+      <code>getQuery</code>
+      <code>setParam</code>
+    </PossiblyUndefinedMethod>
+    <RedundantCondition occurrences="1">
+      <code>! $bodyParams</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="1">
+      <code>$error === JSON_ERROR_NONE &amp;&amp; $isArray</code>
+    </TypeDoesNotContainType>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getFiles</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ControllerPlugin/BodyParam.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getPost</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$param</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="1">
+      <code>getRequest</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getRequest</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ControllerPlugin/BodyParams.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array|ArrayAccess</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>getPost</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$controller-&gt;getRequest()-&gt;getPost()</code>
+    </MixedReturnStatement>
+    <PossiblyNullReference occurrences="1">
+      <code>getRequest</code>
+    </PossiblyNullReference>
+    <UndefinedDocblockClass occurrences="1">
+      <code>array|ArrayAccess</code>
+    </UndefinedDocblockClass>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getRequest</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ControllerPlugin/QueryParam.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getQuery</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$param</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="1">
+      <code>getRequest</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getRequest</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ControllerPlugin/QueryParams.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="2">
+      <code>getQuery</code>
+      <code>toArray</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;getController()-&gt;getRequest()-&gt;getQuery()-&gt;toArray()</code>
+    </MixedReturnStatement>
+    <PossiblyNullReference occurrences="1">
+      <code>getRequest</code>
+    </PossiblyNullReference>
+    <UndefinedDocblockClass occurrences="1">
+      <code>RuntimeException</code>
+    </UndefinedDocblockClass>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getRequest</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ControllerPlugin/RouteParam.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getParam</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$param</code>
+    </PossiblyNullArgument>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getRouteMatch</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/ControllerPlugin/RouteParams.php">
+    <MixedAssignment occurrences="1">
+      <code>$parameterData</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>getParams</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$controller-&gt;getEvent()-&gt;getRouteMatch()-&gt;getParams()</code>
+    </MixedReturnStatement>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getRouteMatch</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/Factory/AcceptFilterListenerFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$options-&gt;getAcceptWhitelist()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$options</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getAcceptWhitelist</code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Factory/AcceptListenerFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$container-&gt;get(ContentNegotiationOptions::class)-&gt;toArray()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$plugins</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>AcceptableViewModelSelector</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>get</code>
+      <code>has</code>
+      <code>toArray</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$plugins-&gt;get('AcceptableViewModelSelector')</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Factory/ContentNegotiationOptionsFactory.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$config['api-tools-content-negotiation']</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Factory/ContentTypeFilterListenerFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$options-&gt;getContentTypeWhitelist()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$options</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getContentTypeWhitelist</code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Factory/HttpMethodOverrideListenerFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$httpOverrideMethods</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$httpOverrideMethods</code>
+      <code>$options</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getHttpOverrideMethods</code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Factory/RenameUploadFilterFactory.php">
+    <DeprecatedInterface occurrences="1">
+      <code>RenameUploadFilterFactory</code>
+    </DeprecatedInterface>
+    <DeprecatedMethod occurrences="1">
+      <code>getServiceLocator</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="1">
+      <code>$container-&gt;get('Request')</code>
+    </MixedArgument>
+    <ParamNameMismatch occurrences="1">
+      <code>$container</code>
+    </ParamNameMismatch>
+    <PossiblyNullArgument occurrences="1">
+      <code>$options</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/Factory/UploadFileValidatorFactory.php">
+    <DeprecatedInterface occurrences="1">
+      <code>UploadFileValidatorFactory</code>
+    </DeprecatedInterface>
+    <DeprecatedMethod occurrences="2">
+      <code>getServiceLocator</code>
+      <code>getServiceLocator</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="1">
+      <code>$container-&gt;get('Request')</code>
+    </MixedArgument>
+    <ParamNameMismatch occurrences="1">
+      <code>$container</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/Filter/RenameUpload.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>null === $this-&gt;request</code>
+    </DocblockTypeContradiction>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$request</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/HttpMethodOverrideListener.php">
+    <MixedArgument occurrences="3">
+      <code>$allowedMethods</code>
+      <code>$overrideMethod</code>
+      <code>$overrideMethod</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$allowedMethods</code>
+      <code>$overrideMethod</code>
+    </MixedAssignment>
+    <PossiblyInvalidMethodCall occurrences="2">
+      <code>getFieldValue</code>
+      <code>has</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyUndefinedMethod occurrences="2">
+      <code>getFieldValue</code>
+      <code>has</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/JsonModel.php">
+    <DeprecatedClass occurrences="1">
+      <code>array|Traversable|JsonSerializable|StdlibJsonSerializable</code>
+    </DeprecatedClass>
+    <DeprecatedMethod occurrences="1">
+      <code>entity</code>
+    </DeprecatedMethod>
+    <DocblockTypeContradiction occurrences="1">
+      <code>false === $serialized</code>
+    </DocblockTypeContradiction>
+    <ImplementedParamTypeMismatch occurrences="1">
+      <code>$variables</code>
+    </ImplementedParamTypeMismatch>
+    <MixedAssignment occurrences="2">
+      <code>$variables</code>
+      <code>$variables</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>self</code>
+    </MixedInferredReturnType>
+    <ParamNameMismatch occurrences="1">
+      <code>$flag</code>
+    </ParamNameMismatch>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>$variables</code>
+    </PossiblyUndefinedMethod>
+    <RedundantCondition occurrences="1">
+      <code>method_exists($variables, 'getEntity')</code>
+    </RedundantCondition>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>null !== $this-&gt;jsonpCallback</code>
+    </RedundantConditionGivenDocblockType>
+    <UndefinedDocblockClass occurrences="1">
+      <code>array|Traversable|JsonSerializable|StdlibJsonSerializable</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/Module.php">
+    <MixedArgument occurrences="2">
+      <code>$services-&gt;get(AcceptListener::class)</code>
+      <code>$services-&gt;get(ContentTypeListener::class)</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$contentNegotiationOptions</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="4">
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>getXHttpMethodOverrideEnabled</code>
+    </MixedMethodCall>
+    <PossiblyNullReference occurrences="1">
+      <code>attach</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/MultipartContentParser.php">
+    <MixedArgument occurrences="5">
+      <code>$headers['CONTENT-DISPOSITION']</code>
+      <code>$headers['CONTENT-DISPOSITION']</code>
+      <code>$lastline</code>
+      <code>$lastline</code>
+      <code>$this-&gt;request-&gt;getContent()</code>
+    </MixedArgument>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$headers['CONTENT-TYPE']</code>
+    </MixedReturnStatement>
+    <PossiblyFalseArgument occurrences="2">
+      <code>$name</code>
+      <code>$name</code>
+    </PossiblyFalseArgument>
+    <PossiblyInvalidArgument occurrences="5">
+      <code>$tmpFile</code>
+      <code>$tmpFile</code>
+      <code>$tmpFile</code>
+      <code>$tmpFile</code>
+      <code>$tmpFile</code>
+    </PossiblyInvalidArgument>
+    <PossiblyUndefinedArrayOffset occurrences="3">
+      <code>$file['error']</code>
+      <code>$file['tmp_name']</code>
+      <code>$file['tmp_name']</code>
+    </PossiblyUndefinedArrayOffset>
+    <PossiblyUndefinedVariable occurrences="2">
+      <code>$lastline</code>
+      <code>$lastline</code>
+    </PossiblyUndefinedVariable>
+  </file>
+  <file src="src/Request.php">
+    <DocblockTypeContradiction occurrences="2">
+      <code>is_resource($this-&gt;contentStream)</code>
+    </DocblockTypeContradiction>
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>fopen('php://temp', 'r+')</code>
+    </InvalidPropertyAssignmentValue>
+    <MixedArgument occurrences="2">
+      <code>$this-&gt;content</code>
+      <code>$this-&gt;contentStream</code>
+    </MixedArgument>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;contentStream</code>
+    </MixedReturnStatement>
+    <PossiblyInvalidPropertyAssignmentValue occurrences="1">
+      <code>$stream</code>
+    </PossiblyInvalidPropertyAssignmentValue>
+    <PropertyNotSetInConstructor occurrences="6">
+      <code>Request</code>
+      <code>Request</code>
+      <code>Request</code>
+      <code>Request</code>
+      <code>Request</code>
+      <code>Request</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Validator/UploadFile.php">
+    <MixedArgument occurrences="3">
+      <code>$this-&gt;abstractOptions['messages']</code>
+      <code>$value</code>
+      <code>$value</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$this-&gt;abstractOptions['messages']</code>
+      <code>$this-&gt;abstractOptions['messages']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="2">
+      <code>$this-&gt;abstractOptions['messages'][static::ATTACK]</code>
+      <code>$this-&gt;abstractOptions['messages'][static::ATTACK]</code>
+    </MixedArrayOffset>
+  </file>
+  <file src="test/AcceptFilterListenerTest.php">
+    <MixedArgument occurrences="2">
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+    </MixedArgument>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/AcceptListenerTest.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;event-&gt;getRequest()</code>
+    </ArgumentTypeCoercion>
+    <InvalidArgument occurrences="1">
+      <code>$selector</code>
+    </InvalidArgument>
+    <MixedArgument occurrences="3">
+      <code>$response-&gt;getApiProblem()-&gt;detail</code>
+      <code>$selector</code>
+      <code>$this-&gt;event</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="3">
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$selector</code>
+    </MixedAssignment>
+    <MixedFunctionCall occurrences="2">
+      <code>$listener($this-&gt;event)</code>
+      <code>$listener($this-&gt;event)</code>
+    </MixedFunctionCall>
+    <MixedMethodCall occurrences="5">
+      <code>plugin</code>
+      <code>setRequest</code>
+      <code>setResult</code>
+      <code>setResult</code>
+      <code>setResult</code>
+    </MixedMethodCall>
+    <PossiblyInvalidArgument occurrences="1"/>
+    <UndefinedThisPropertyAssignment occurrences="3">
+      <code>$this-&gt;controller</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="6">
+      <code>$this-&gt;controller</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/ContentTypeFilterListenerTest.php">
+    <MixedArgument occurrences="1">
+      <code>$response-&gt;getApiProblem()-&gt;detail</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$request</code>
+      <code>$request</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="18">
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>getHeaders</code>
+      <code>getHeaders</code>
+      <code>getHeaders</code>
+      <code>getRequest</code>
+      <code>getRequest</code>
+      <code>getRequest</code>
+      <code>onRoute</code>
+      <code>onRoute</code>
+      <code>onRoute</code>
+      <code>onRoute</code>
+      <code>setConfig</code>
+      <code>setConfig</code>
+      <code>setConfig</code>
+      <code>setContent</code>
+      <code>setContent</code>
+    </MixedMethodCall>
+    <PossiblyInvalidArgument occurrences="1"/>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="8">
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;event</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/ContentTypeListenerTest.php">
+    <InvalidDocblock occurrences="1">
+      <code>public function multipartFormDataMethods(): array</code>
+    </InvalidDocblock>
+    <MixedArgument occurrences="9">
+      <code>$details['detail']</code>
+      <code>$file['tmp_name']</code>
+      <code>$file['tmp_name']</code>
+      <code>$file['tmp_name']</code>
+      <code>$file['tmp_name']</code>
+      <code>$problem-&gt;detail</code>
+      <code>$problem-&gt;detail</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="31">
+      <code>$files</code>
+      <code>$files</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$listener</code>
+      <code>$parameterData</code>
+      <code>$parameterData</code>
+      <code>$parameterData</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+    </MixedAssignment>
+    <MixedFunctionCall occurrences="16">
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+      <code>$listener($event)</code>
+    </MixedFunctionCall>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="17">
+      <code>count</code>
+      <code>count</code>
+      <code>get</code>
+      <code>get</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>getBodyParams</code>
+      <code>onFinish</code>
+      <code>onFinish</code>
+      <code>onFinish</code>
+    </MixedMethodCall>
+    <PossiblyInvalidArgument occurrences="16">
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+      <code>$this-&gt;createRouteMatch([])</code>
+    </PossiblyInvalidArgument>
+    <PossiblyInvalidMethodCall occurrences="14">
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyUndefinedMethod occurrences="14">
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+    </PossiblyUndefinedMethod>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="19">
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+      <code>$this-&gt;listener</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/Factory/AcceptFilterListenerFactoryTest.php">
+    <TooManyArguments occurrences="1">
+      <code>$factory</code>
+    </TooManyArguments>
+  </file>
+  <file src="test/Factory/AcceptListenerFactoryTest.php">
+    <TooManyArguments occurrences="1">
+      <code>$factory</code>
+    </TooManyArguments>
+  </file>
+  <file src="test/Factory/ContentNegotiationOptionsFactoryTest.php">
+    <TooManyArguments occurrences="3">
+      <code>$factory</code>
+      <code>$factory</code>
+      <code>$factory</code>
+    </TooManyArguments>
+  </file>
+  <file src="test/Factory/ContentTypeFilterListenerFactoryTest.php">
+    <TooManyArguments occurrences="1">
+      <code>$factory</code>
+    </TooManyArguments>
+  </file>
+  <file src="test/Factory/HttpMethodOverrideListenerFactoryTest.php">
+    <MixedArgument occurrences="1">
+      <code>$container-&gt;reveal()</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="1">
+      <code>willReturn</code>
+    </MixedMethodCall>
+    <PossiblyInvalidMethodCall occurrences="1">
+      <code>willReturn</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>reveal</code>
+    </PossiblyUndefinedMethod>
+    <TooManyArguments occurrences="1">
+      <code>$factory</code>
+    </TooManyArguments>
+  </file>
+  <file src="test/Factory/RenameUploadFilterFactoryTest.php">
+    <MixedAssignment occurrences="2">
+      <code>$filter</code>
+      <code>$otherFilter</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="2">
+      <code>getTarget</code>
+      <code>getTarget</code>
+    </MixedMethodCall>
+  </file>
+  <file src="test/Filter/RenameUploadTest.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$file['tmp_name']</code>
+    </InvalidScalarArgument>
+    <MixedArgument occurrences="7">
+      <code>$this-&gt;targetDir</code>
+      <code>$this-&gt;targetDir</code>
+      <code>$this-&gt;tmpDir</code>
+      <code>$this-&gt;tmpDir</code>
+      <code>$this-&gt;uploadDir</code>
+      <code>$this-&gt;uploadDir</code>
+      <code>$this-&gt;uploadDir</code>
+    </MixedArgument>
+    <MixedOperand occurrences="1">
+      <code>$this-&gt;targetDir</code>
+    </MixedOperand>
+    <UndefinedDocblockClass occurrences="1">
+      <code>$filter-&gt;filter($file)</code>
+    </UndefinedDocblockClass>
+    <UndefinedThisPropertyAssignment occurrences="3">
+      <code>$this-&gt;targetDir</code>
+      <code>$this-&gt;tmpDir</code>
+      <code>$this-&gt;uploadDir</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="5">
+      <code>$this-&gt;targetDir</code>
+      <code>$this-&gt;targetDir</code>
+      <code>$this-&gt;tmpDir</code>
+      <code>$this-&gt;uploadDir</code>
+      <code>$this-&gt;uploadDir</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/HttpMethodOverrideListenerTest.php">
+    <InvalidArgument occurrences="1">
+      <code>testHttpMethodOverrideListener</code>
+    </InvalidArgument>
+    <MixedArgument occurrences="2">
+      <code>$problem-&gt;detail</code>
+      <code>$problem-&gt;detail</code>
+    </MixedArgument>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$this-&gt;createRouteMatch([])</code>
+    </PossiblyInvalidArgument>
+    <PossiblyInvalidMethodCall occurrences="3">
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyUndefinedMethod occurrences="3">
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+      <code>addHeaderLine</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="test/JsonModelTest.php">
+    <InvalidArgument occurrences="1">
+      <code>new TestAsset\ModelWithJson()</code>
+    </InvalidArgument>
+    <MixedAssignment occurrences="2">
+      <code>$data</code>
+      <code>$data</code>
+    </MixedAssignment>
+  </file>
+  <file src="test/RequestTest.php">
+    <MixedArgument occurrences="6">
+      <code>$stream</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$stream</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="4">
+      <code>getContentAsStream</code>
+      <code>getContentAsStream</code>
+      <code>setContentStream</code>
+      <code>setContentStream</code>
+    </MixedMethodCall>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;request</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="7">
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+      <code>$this-&gt;request</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/RouteMatchFactoryTrait.php">
+    <UndefinedDocblockClass occurrences="1">
+      <code>V2RouteMatch|RouteMatch</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="test/Validator/UploadFileTest.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>1</code>
+    </InvalidScalarArgument>
+    <MixedMethodCall occurrences="3">
+      <code>getMessages</code>
+      <code>isValid</code>
+      <code>setRequest</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>var_export($this-&gt;validator-&gt;getMessages(), 1)</code>
+    </PossiblyNullArgument>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;validator</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;validator</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+</files>

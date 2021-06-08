@@ -52,7 +52,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListener(string $method)
+    public function testHttpMethodOverrideListener(string $method): void
     {
         $listener = $this->listener;
 
@@ -64,14 +64,14 @@ class HttpMethodOverrideListenerTest extends TestCase
         $event->setRequest($request);
         $event->setRouteMatch($this->createRouteMatch([]));
 
-        $result = $listener->onRoute($event);
+        $listener->onRoute($event);
         $this->assertEquals($method, $request->getMethod());
     }
 
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig(string $method)
+    public function testHttpMethodOverrideListenerReturnsProblemResponseForMethodNotInConfig(string $method): void
     {
         $listener = $this->listener;
 
@@ -95,7 +95,7 @@ class HttpMethodOverrideListenerTest extends TestCase
     /**
      * @dataProvider httpMethods
      */
-    public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue(string $method)
+    public function testHttpMethodOverrideListenerReturnsProblemResponseForIllegalOverrideValue(string $method): void
     {
         $listener = $this->listener;
 

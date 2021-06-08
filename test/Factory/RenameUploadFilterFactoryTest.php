@@ -22,7 +22,7 @@ class RenameUploadFilterFactoryTest extends TestCase
         $this->filters = new FilterPluginManager(new ServiceManager(), $config);
     }
 
-    public function testMultipleFilters()
+    public function testMultipleFilters(): void
     {
         $optionsFilterOne = [
             'target' => 'SomeDir',

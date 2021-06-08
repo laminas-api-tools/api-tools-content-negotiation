@@ -141,6 +141,8 @@ class ContentTypeListener
 
     /**
      * Remove upload files if still present in filesystem
+     *
+     * @return void
      */
     public function onFinish(MvcEvent $e)
     {
@@ -215,6 +217,7 @@ class ContentTypeListener
      * Attach the file cleanup listener
      *
      * @param string $uploadTmpDir Directory in which file uploads were made
+     * @return void
      */
     protected function attachFileCleanupListener(MvcEvent $event, $uploadTmpDir)
     {

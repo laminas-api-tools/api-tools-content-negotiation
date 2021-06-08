@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class ContentTypeFilterListenerFactoryTest extends TestCase
 {
-    public function testCreateServiceShouldReturnContentTypeFilterListenerInstance()
+    public function testCreateServiceShouldReturnContentTypeFilterListenerInstance(): void
     {
         $serviceManager = new ServiceManager();
         $serviceManager->setService(

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ContentNegotiationOptionsFactoryTest extends TestCase
 {
-    public function testCreateServiceShouldReturnContentNegotiationOptionsInstance()
+    public function testCreateServiceShouldReturnContentNegotiationOptionsInstance(): void
     {
         $config = [
             'api-tools-content-negotiation' => [
@@ -27,7 +27,7 @@ class ContentNegotiationOptionsFactoryTest extends TestCase
         $this->assertInstanceOf(ContentNegotiationOptions::class, $service);
     }
 
-    public function testCreateServiceShouldReturnContentNegotiationOptionsInstanceWithOptions()
+    public function testCreateServiceShouldReturnContentNegotiationOptionsInstanceWithOptions(): void
     {
         $config = [
             'api-tools-content-negotiation' => [
@@ -45,7 +45,7 @@ class ContentNegotiationOptionsFactoryTest extends TestCase
         $this->assertNotEmpty($service->toArray());
     }
 
-    public function testCreateServiceWithoutConfigShouldReturnContentNegotiationOptionsInstance()
+    public function testCreateServiceWithoutConfigShouldReturnContentNegotiationOptionsInstance(): void
     {
         $serviceManager = new ServiceManager();
 
