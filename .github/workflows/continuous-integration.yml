@@ -32,4 +32,4 @@ jobs:
         with:
           job: ${{ matrix.job }}
         env:
-          "GITHUB_TOKEN": ${{ secrets.GITHUB_TOKEN }}
+          "GITHUB_TOKEN": ${{ secrets.ORGANIZATION_READ_ONLY_TOKEN }}
