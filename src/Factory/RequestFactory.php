@@ -9,8 +9,6 @@ use Laminas\Console\Request as ConsoleRequest;
 
 use function class_exists;
 
-use const PHP_SAPI;
-
 class RequestFactory
 {
     /**
@@ -25,7 +23,6 @@ class RequestFactory
             return Console::isConsole() ? new ConsoleRequest() : new HttpRequest();
         }
 
-        // If console tooling is not present, we use the PHP_SAPI value to decide.
-        return PHP_SAPI === 'cli' ? new ConsoleRequest() : new HttpRequest();
+        return new HttpRequest();
     }
 }
