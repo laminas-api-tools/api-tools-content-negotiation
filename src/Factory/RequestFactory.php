@@ -11,6 +11,9 @@ use function class_exists;
 
 use const PHP_SAPI;
 
+/**
+ * @deprecated Since 1.6.0. This factory is no longer used within the module.
+ */
 class RequestFactory
 {
     /**
