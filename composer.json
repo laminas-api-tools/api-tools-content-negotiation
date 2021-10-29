@@ -42,14 +42,10 @@
     "require-dev": {
         "laminas-api-tools/api-tools-hal": "^1.4",
         "laminas/laminas-coding-standard": "~2.2.0",
-        "laminas/laminas-console": "^2.8",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.3",
         "psalm/plugin-phpunit": "^0.16.0",
         "vimeo/psalm": "^4.7"
-    },
-    "suggest": {
-        "laminas/laminas-console": "^2.0, if you intend to use the console request of RequestFactory"
     },
     "autoload": {
         "psr-4": {
