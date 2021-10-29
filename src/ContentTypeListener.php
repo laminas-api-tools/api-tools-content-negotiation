@@ -4,6 +4,8 @@ namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\Http\Header\ContentType;
+use Laminas\Http\PhpEnvironment\Request;
 use Laminas\Mvc\MvcEvent;
 
 use function array_key_exists;
@@ -80,7 +82,9 @@ class ContentTypeListener
 
         // body parameters:
         $bodyParams  = [];
+        /** @var Request $request */
         $contentType = $request->getHeader('Content-Type');
+        /** @var null|ContentType $contentType */
         switch ($request->getMethod()) {
             case $request::METHOD_POST:
                 if ($contentType && $contentType->match('application/json')) {
@@ -202,7 +206,7 @@ class ContentTypeListener
         }
 
         $error = json_last_error();
-        if ($error === JSON_ERROR_NONE && $isArray) {
+        if ($error === JSON_ERROR_NONE) {
             return $data;
         }
 
