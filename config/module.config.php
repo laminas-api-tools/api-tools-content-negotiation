@@ -35,7 +35,6 @@ return [
     'service_manager'               => [
         'factories' => [
             ContentTypeListener::class        => InvokableFactory::class,
-            'Request'                         => Factory\RequestFactory::class,
             AcceptListener::class             => Factory\AcceptListenerFactory::class,
             AcceptFilterListener::class       => Factory\AcceptFilterListenerFactory::class,
             ContentTypeFilterListener::class  => Factory\ContentTypeFilterListenerFactory::class,
