@@ -13,6 +13,7 @@
         <ignoreFiles>
             <directory name="test/TestAsset"/>
             <directory name="vendor"/>
+            <file name="src/Factory/RequestFactory.php"/>
         </ignoreFiles>
     </projectFiles>
 

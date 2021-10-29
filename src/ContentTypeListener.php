@@ -4,6 +4,8 @@ namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
+use Laminas\Http\Header\ContentType;
+use Laminas\Http\PhpEnvironment\Request;
 use Laminas\Mvc\MvcEvent;
 
 use function array_key_exists;
@@ -79,8 +81,10 @@ class ContentTypeListener
         $parameterData->setQueryParams($request->getQuery()->toArray());
 
         // body parameters:
-        $bodyParams  = [];
+        $bodyParams = [];
+        /** @psalm-var Request $request */
         $contentType = $request->getHeader('Content-Type');
+        /** @var null|ContentType $contentType */
         switch ($request->getMethod()) {
             case $request::METHOD_POST:
                 if ($contentType && $contentType->match('application/json')) {
