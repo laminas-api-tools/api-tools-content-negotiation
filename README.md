@@ -19,9 +19,9 @@ The following features are provided
   immediately rejected with a `415 Unsupported Media Type` response.
 
 ## Requirements
-  
+
 Please see the [composer.json](composer.json) file.
- 
+
 ## Installation
 
 Run the following `composer` command:
@@ -124,7 +124,7 @@ controller to return either JSON or HTML output:
             'application/*+json',
         ],
         'Laminas\ApiTools\ContentNegotiation\ViewModel' => [
-            'text/html',            
+            'text/html',
         ],
     ],
 ],
@@ -253,7 +253,6 @@ function:
 'service_manager' => [
     'factories' => [
         ContentTypeListener::class        => InvokableFactory::class,
-        'Request'                         => Factory\RequestFactory::class,
         AcceptListener::class             => Factory\AcceptListenerFactory::class,
         AcceptFilterListener::class       => Factory\AcceptFilterListenerFactory::class,
         ContentTypeFilterListener::class  => Factory\ContentTypeFilterListenerFactory::class,
