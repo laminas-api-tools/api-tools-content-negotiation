@@ -81,8 +81,8 @@ class ContentTypeListener
         $parameterData->setQueryParams($request->getQuery()->toArray());
 
         // body parameters:
-        $bodyParams  = [];
-        /** @var Request $request */
+        $bodyParams = [];
+        /** @psalm-var Request $request */
         $contentType = $request->getHeader('Content-Type');
         /** @var null|ContentType $contentType */
         switch ($request->getMethod()) {
@@ -206,7 +206,7 @@ class ContentTypeListener
         }
 
         $error = json_last_error();
-        if ($error === JSON_ERROR_NONE) {
+        if ($error === JSON_ERROR_NONE && $isArray) {
             return $data;
         }
 

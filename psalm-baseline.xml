@@ -170,6 +170,10 @@
       <code>! $bodyParams</code>
       <code>! $bodyParams</code>
     </RedundantCondition>
+    <TypeDoesNotContainType occurrences="2">
+      <code>$error === JSON_ERROR_NONE &amp;&amp; $isArray</code>
+      <code>$isArray</code>
+    </TypeDoesNotContainType>
     <UndefinedInterfaceMethod occurrences="1">
       <code>getFiles</code>
     </UndefinedInterfaceMethod>
