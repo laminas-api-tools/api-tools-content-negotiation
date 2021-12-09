@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\ApiTools\ContentNegotiation;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
