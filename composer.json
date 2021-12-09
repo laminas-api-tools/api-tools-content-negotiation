@@ -41,7 +41,7 @@
     },
     "require-dev": {
         "laminas-api-tools/api-tools-hal": "^1.4",
-        "laminas/laminas-coding-standard": "~2.2.0",
+        "laminas/laminas-coding-standard": "~2.3.0",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.3",
         "psalm/plugin-phpunit": "^0.16.0",
@@ -66,7 +66,7 @@
         "cs-fix": "phpcbf",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-        "static-analysis": "psalm --shepherd --stats --show-info=true"
+        "static-analysis": "psalm --shepherd --stats"
     },
     "replace": {
         "zfcampus/zf-content-negotiation": "^1.4.0"

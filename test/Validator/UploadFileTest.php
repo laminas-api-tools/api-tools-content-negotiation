@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\ApiTools\ContentNegotiation\Validator;
 
 use Laminas\ApiTools\ContentNegotiation\Validator\UploadFile;
@@ -46,6 +48,6 @@ class UploadFileTest extends TestCase
             'error'    => UPLOAD_ERR_OK,
         ];
 
-        $this->assertTrue($this->validator->isValid($file), var_export($this->validator->getMessages(), 1));
+        $this->assertTrue($this->validator->isValid($file), var_export($this->validator->getMessages(), true));
     }
 }

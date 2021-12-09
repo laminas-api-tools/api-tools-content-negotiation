@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Laminas\ApiTools\ContentNegotiation\AcceptFilterListener;
 use Laminas\ApiTools\ContentNegotiation\AcceptListener;
 use Laminas\ApiTools\ContentNegotiation\ContentNegotiationOptions;

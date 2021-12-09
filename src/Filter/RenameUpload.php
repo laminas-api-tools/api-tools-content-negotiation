@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\ApiTools\ContentNegotiation\Filter;
 
 use Laminas\Filter\Exception\RuntimeException as FilterRuntimeException;
