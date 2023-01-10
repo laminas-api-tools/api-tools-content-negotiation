@@ -39,6 +39,9 @@ class ContentTypeListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
+    /** @var ContentTypeListener */
+    protected $listener;
+
     protected function setUp(): void
     {
         $this->listener = new ContentTypeListener();

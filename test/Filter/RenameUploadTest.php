@@ -27,6 +27,15 @@ use const UPLOAD_ERR_OK;
 
 class RenameUploadTest extends TestCase
 {
+    /** @var string */
+    protected $tmpDir;
+
+    /** @var string */
+    protected $uploadDir;
+
+    /** @var string */
+    protected $targetDir;
+
     protected function setUp(): void
     {
         $this->tmpDir    = sys_get_temp_dir() . '/api-tools-content-negotiation-filter';

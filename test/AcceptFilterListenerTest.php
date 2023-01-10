@@ -14,6 +14,9 @@ class AcceptFilterListenerTest extends TestCase
 {
     use ProphecyTrait;
 
+    /** @var AcceptFilterListener */
+    protected $listener;
+
     protected function setUp(): void
     {
         $this->listener = new AcceptFilterListener();

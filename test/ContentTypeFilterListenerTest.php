@@ -15,6 +15,12 @@ class ContentTypeFilterListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
+    /** @var ContentTypeFilterListener */
+    protected $listener;
+
+    /** @var MvcEvent */
+    protected $event;
+
     protected function setUp(): void
     {
         $this->listener = new ContentTypeFilterListener();

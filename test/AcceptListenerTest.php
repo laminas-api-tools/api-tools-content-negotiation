@@ -7,6 +7,7 @@ namespace LaminasTest\ApiTools\ContentNegotiation;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\ApiTools\ContentNegotiation\AcceptListener;
 use Laminas\Http\Request;
+use Laminas\Mvc\Controller\Plugin\AcceptableViewModelSelector;
 use Laminas\Mvc\Controller\PluginManager as ControllerPluginManager;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceManager;
@@ -20,9 +21,19 @@ class AcceptListenerTest extends TestCase
 {
     use RouteMatchFactoryTrait;
 
+    /** @var AcceptListener */
+    protected $listener;
+
+    /** @var MvcEvent */
+    protected $event;
+
+    /** @var ContentTypeController */
+    protected $controller;
+
     protected function setUp(): void
     {
-        $plugins  = new ControllerPluginManager(new ServiceManager());
+        $plugins = new ControllerPluginManager(new ServiceManager());
+        /** @var AcceptableViewModelSelector $selector */
         $selector = $plugins->get('AcceptableViewModelSelector');
 
         $this->listener   = new AcceptListener($selector, [
@@ -64,6 +75,7 @@ class AcceptListenerTest extends TestCase
 
     public function testReturnADefaultViewModelIfNoCriteriaSpecifiedForAController(): void
     {
+        /** @var AcceptableViewModelSelector $selector */
         $selector = $this->controller->plugin('AcceptableViewModelSelector');
         $listener = new AcceptListener($selector, []);
         $this->event->setResult(['foo' => 'bar']);
@@ -78,6 +90,7 @@ class AcceptListenerTest extends TestCase
      */
     public function testShouldExitEarlyIfNonHttpRequestPresentInEvent(): void
     {
+        /** @var RequestInterface $request */
         $request = $this->getMockBuilder(RequestInterface::class)->getMock();
         $this->event->setRequest($request);
 

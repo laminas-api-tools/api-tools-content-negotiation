@@ -17,6 +17,9 @@ use const UPLOAD_ERR_OK;
 
 class UploadFileTest extends TestCase
 {
+    /** @var UploadFile */
+    protected $validator;
+
     protected function setUp(): void
     {
         $this->validator = new UploadFile();
