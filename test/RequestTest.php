@@ -15,6 +15,9 @@ use function stream_get_contents;
 
 class RequestTest extends TestCase
 {
+    /** @var Request */
+    protected $request;
+
     protected function setUp(): void
     {
         $this->request = new Request();

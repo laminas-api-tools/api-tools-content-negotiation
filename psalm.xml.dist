@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-    totallyTyped="true"
+    errorLevel="1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
@@ -29,6 +29,42 @@
                 <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
             </errorLevel>
         </InternalMethod>
+
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <referencedMethod name="Laminas\Stdlib\RequestInterface::getHeaders"/>
+            </errorLevel>
+        </UndefinedInterfaceMethod>
+
+        <RedundantConditionGivenDocblockType>
+            <errorLevel type="suppress">
+                <directory name="test"/>
+            </errorLevel>
+        </RedundantConditionGivenDocblockType>
+
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <file name="test/Factory/RenameUploadFilterFactoryTest.php"/>
+            </errorLevel>
+        </InvalidArgument>
+
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Factory/UploadFileValidatorFactory.php"/>
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
+
+        <UndefinedDocblockClass>
+            <errorLevel type="suppress">
+                <file name="src/Filter/RenameUpload.php"/>
+            </errorLevel>
+        </UndefinedDocblockClass>
+
+        <MoreSpecificImplementedParamType>
+            <errorLevel type="suppress">
+                <file name="src/Factory/UploadFileValidatorFactory.php"/>
+            </errorLevel>
+        </MoreSpecificImplementedParamType>
     </issueHandlers>
 
     <plugins>
